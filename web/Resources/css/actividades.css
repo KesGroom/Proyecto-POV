@@ -1,0 +1,130 @@
+/* Se reinician las margenes y espaciados predeterminados del navegador y se establecen  en 0*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Se le aplica la fuente a todos los elementos del body */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Se estiliza el scrollbar (Para el navegador Chrome) */
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 15px;
+}
+
+body a {
+  text-decoration: none;
+}
+
+.contenedor {
+  width: 100%;
+
+  /* Flex */
+  display: flex;
+  flex-direction: column;
+}
+
+.Bread {
+  width: 100%;
+  padding: 0.3rem 2rem;
+  border-bottom: 1px solid rgb(139, 136, 136);
+  background-color: honeydew;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* Flex */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Bread a {
+  color: rgb(126, 119, 119);
+  margin-right: 0.5rem;
+  font-size: 0.8em;
+}
+
+.Bread i {
+  color: rgb(126, 119, 119);
+  margin-right: 0.5rem;
+  font-size: 0.8em;
+}
+
+.Bread a:hover {
+  color: #b71c1c;
+}
+
+main {
+  padding: 1rem;
+}
+
+.Cabeza {
+  background-color: #b71c1c;
+  color: white;
+}
+
+.titulo {
+  font-size: 3em;
+  font-weight: normal;
+}
+
+.encabezado {
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  margin-bottom: 2rem;
+
+  /* Flex */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.botones {
+  width: 15%;
+
+  /* Flex */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  padding: 0.5rem 0.8rem;
+
+  border-radius: 3px;
+  color: white;
+  background-color: #b71c1c;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn i {
+  font-size: 1.3em;
+}
+
+.Abrev {
+  text-transform: uppercase;
+}
+
+table thead th{
+  padding: 1rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+
+

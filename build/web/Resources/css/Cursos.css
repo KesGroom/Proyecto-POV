@@ -1,0 +1,117 @@
+/* Se reinician las margenes y espaciados predeterminados del navegador y se establecen  en 0*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Se le aplica la fuente a todos los elementos del body */
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Se estiliza el scrollbar (Para el navegador Chrome) */
+body::-webkit-scrollbar{
+    width: 5px;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: black;
+    border-radius: 15px;
+}
+
+.contenedor{
+    width: 100%;
+
+    /* Flex */
+    display: flex;
+    flex-direction: column;
+
+}
+
+.Bread{
+    width: 100%;
+    padding: 0.3rem 2rem;
+    border-bottom: 1px solid rgb(139, 136, 136);
+    background-color: honeydew;
+    position: sticky;
+    top: 0;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.Bread a{
+    color: rgb(126, 119, 119);
+    margin-right: 0.5rem;
+    font-size: 0.8em;
+}
+
+.Bread i{
+    color: rgb(126, 119, 119);
+    margin-right: 0.5rem;
+    font-size: 0.8em;
+}
+
+.Bread a:hover{
+    color: #b71c1c;
+}
+
+.titulo{
+    margin-left: 2rem;
+}
+
+.contenedorCurs{
+    width: 100;
+    padding: 0 1.5rem;
+    
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.contenedorCurs ul{
+    width: 19%;
+    height: fit-content;
+}
+
+.contenedorCurs .planillas{
+    width: 80%;
+    
+}
+
+.contenedorCurs .planillas iframe{
+    width: 100%;
+    height: 76vh;
+    border: 1px solid black;
+}
+
+/* mediaqueries */
+
+@media screen and (max-width: 600px){
+
+.contenedorCurs{
+    flex-direction: column;
+}
+
+.contenedorCurs ul{
+    width: 100%;
+}
+
+.contenedorCurs .planillas{
+    width: 100%;
+}
+
+.contenedor .planillas iframe{
+    height: 80vh;
+    margin-bottom: 3rem;
+}
+
+}
+

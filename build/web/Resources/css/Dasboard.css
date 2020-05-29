@@ -1,0 +1,281 @@
+/* Se reinician las margenes y espaciados predeterminados del navegador y se establecen  en 0*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Se le aplica la fuente a todos los elementos del body */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Se estiliza el scrollbar (Para el navegador Chrome) */
+body::-webkit-scrollbar {
+  width: 0px;
+}
+
+body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 15px;
+}
+
+body a {
+  text-decoration: none;
+}
+
+.contenedor {
+  width: 100%;
+
+  /* Flex */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+header {
+  width: 100;
+  background-color: #b71c1c;
+  padding: 0.5rem 2rem;
+  position: sticky;
+  top: 0;
+
+  /* Flex */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .enlaces {
+  width: 25%;
+
+  /* Flex */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a {
+  color: white;
+}
+
+header .logo img {
+  width: 17rem;
+  height: 3rem;
+}
+
+/* Se establece el valor inicial del header */
+#header {
+  padding-left: 20%;
+  transition: all 400ms linear;
+}
+/* Luego se establece su nuevo valor al activar el boton del menu */
+#header.active {
+  padding-left: 0%;
+}
+
+/* Igualmente se define con el main tanto antes como despues de la activacion */
+#main {
+  padding-left: 18%;
+  transition: all 400ms linear;
+}
+
+#main.active {
+  padding-left: 0%;
+}
+
+/* Se definen las propiedas del menu */
+#slide-out {
+  width: 18%;
+  left: 0;
+  transition: all 400ms linear;
+}
+
+/* Se definen las propiedades del menu luego de activar el boton del menu */
+#slide-out.active {
+  left: -18%;
+}
+
+/* Se le da estilos al boton de menu */
+.toogle_btn {
+  /* position: absolute;*/
+  margin-left: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+header .logo .menuCel {
+  display: none;
+}
+
+/* Se define los parametros o medidas del iframe */
+main iframe {
+  width: 100%;
+  height: 90vh;
+  /* border: 1px solid black; */
+}
+
+.Users {
+  display: none;
+}
+
+#MenuCel {
+  display: none;
+}
+
+.background {
+  background-image: url(/img/Fondos/postes.gif);
+  background-size: cover;
+  background-color: gray;
+  background-blend-mode: soft-light;
+}
+
+/* mediaqueries */
+
+@media screen and (max-width: 1200px) {
+  .textoPequeno {
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .textoPequeno {
+    font-size: 0.6em;
+  }
+}
+
+@media screen and (max-width: 997px) {
+  #slide-out {
+    display: none;
+  }
+
+  #header .logo img {
+    width: 12rem;
+    height: 2.5rem;
+  }
+
+  #header .enlaces a,
+  #header .enlaces i {
+    font-size: 1em;
+  }
+
+  header .enlaces {
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 1rem;
+  }
+
+  header {
+    padding: 0.5rem 0;
+    flex-direction: column-reverse;
+  }
+
+  header .logo {
+    width: 100%;
+    padding: 0 1rem;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header .logo .menuCel {
+    display: inline-block;
+  }
+
+  .toogle_btn {
+    display: none;
+  }
+
+  .Users {
+    display: inline-block;
+  }
+
+  #main,
+  #header {
+    padding: 2%;
+  }
+
+  #main.active,
+  #header.active {
+    padding: 2%;
+  }
+
+  #MenuCel {
+    background-color: white;
+    width: 30%;
+    height: 91vh;
+    left: 0;
+    position: fixed;
+    top: 17vh;
+    transition: all 800ms linear;
+    border-right: 1px solid rgb(110, 108, 108);
+
+    /* Flex */
+    display: flex;
+    flex-direction: column;
+  }
+
+  #MenuCel ul li ul {
+    padding: 0;
+  }
+
+  #MenuCel.cerrado {
+    left: -50rem;
+  }
+
+  #MenuCel a {
+    color: black;
+    font-size: 1rem;
+  }
+
+  #MenuCel a i {
+    margin-right: 0.5rem;
+  }
+
+  #MenuCel ul {
+    padding: 1.5rem;
+  }
+
+  #MenuCel li {
+    margin-bottom: 1rem;
+  }
+
+  #MenuCel ul .divider {
+    background-color: #794949;
+  }
+
+  .textoPequeno {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  #MenuCel {
+    width: 40%;
+    top: 15vh;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  #MenuCel {
+    width: 50%;
+    top: 14vh;
+  }
+}
+
+@media screen and (max-width: 436px) {
+  #MenuCel {
+    width: 70%;
+    top: 13.5vh;
+  }
+}

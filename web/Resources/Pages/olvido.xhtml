@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
+        <link href="../css/materialize.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Se vincula los estilos css específicos de la página-->
+        <link href="../css/Olvido.css" rel="stylesheet" type="text/css"/>
+        <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
+        de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que
+        la página inicie para evitar fallos-->
+        <script src="../js/prefix.js" type="text/javascript"></script>
+        <!-- Se incluye el icono del sistema -->
+        <link rel="shorcut icon" href="../img/Sistema/logoVersionFinal.png"/>
+        <!-- Nombre que se visualizará en el navegador -->
+        <title>Recuperación de contraseña</title>
+    </h:head>
+    <h:body>
+        <!-- Se encierra todo el contenido del body en un div con clase contenedor al cual se le asignaran las propiedades de flexbox -->
+    <!-- Elemento Padre -->
+    <div class="contenedor">
+        <!-- Elemento hijo de contenedor y elemento padre del contenido interno -->
+            <div  class="card-panel correo " id="Correo">
+                <h5 class="center-align">
+                    Ingrese su correo electrónico
+                </h5>
+                
+                <p class="instrucciones">
+                    Recuerde que para poder reestablecer su contraseña se debe ingresar el correo
+                    vinculado a su perfil, ya que se hará envio de una clave de validación que
+                    comprobará si es usted quién ha solicitado el cambio. Si tiene algún inconveniente por favor dirijase a la institución ubicada en la Transv. 5U #48J- 30 SUR
+                    o comuniquese a través del telefono 372 6691.
+                </p>
+
+                    
+            </div>
+            
+            <div class="Oculto" id="ValidacionContenedor">
+            <div id="Validacion" class="card-panel Oculto">
+                
+            </div>
+            </div>
+
+            <div class="Oculto" id="NewContenedor">
+            <div id="ChangePass" class="card-panel Oculto">
+            
+            </div>
+            </div>               
+           
+    </div>
+
+    <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
+    <script src="../js/materialize.min.js" type="text/javascript"></script>
+    <!-- Se vincula al script AutoIniti el cual contiene el inicializador automático de los elementos de materialize -->
+    <script>
+        M.AutoInit();
+    </script>
+    <!-- Se vincula el script de jquery para usar su sintaxis -->
+    <script src="../js/jquery.min.js" type="text/javascript"></script>
+    <!-- Se vincula el archiv para realizar las validaciones de los formularios-->
+    <script src="../js/Olvido.js" type="text/javascript"></script>
+    </h:body>
+</html>
+

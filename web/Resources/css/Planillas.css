@@ -1,0 +1,147 @@
+/* Se reinician las margenes y espaciados predeterminados del navegador y se establecen  en 0*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Se le aplica la fuente a todos los elementos del body */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Se estiliza el scrollbar (Para el navegador Chrome) */
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar:horizontal{
+    height: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 15px;
+}
+
+.contenedor {
+  width: 100%;
+
+  /* Flex */
+  display: flex;
+  flex-direction: column;
+}
+
+.mensaje {
+  width: 100%;
+  font-family: "Open Sans Condensed", sans-serif;
+  background-color: rgba(235, 198, 34, 0.774);
+  color: rgb(0, 0, 0);
+  padding: 0.1rem;
+  text-align: center;
+}
+
+.encabezado {
+  width: 100%;
+  padding: 0.5rem 2rem;
+
+  /* Flex */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#Fecha_Actual {
+  font-size: 1.5em;
+}
+
+.Trabajo {
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.Sticky {
+  top: 0;
+  position: sticky;
+  z-index: 2;
+  background-color: aliceblue;
+}
+
+.Cabeza {
+  background-color: #b71c1c;
+  color: white;
+}
+
+#textarea1:focus {
+  border-bottom: 1px solid #b71c1c;
+  box-shadow: 0 0 1px 0 #b71c1c;
+}
+
+#textarea1:focus + label {
+  color: grey;
+}
+
+th.Act a {
+  color: white;
+}
+
+input[type="text"].net {
+  border-bottom: 1px solid white;
+  width: 4rem;
+}
+#Nota_Final {
+  border-bottom: 1px solid white;
+  width: 4rem;
+}
+
+input[type="text"].net:focus {
+  border-bottom: 1px solid #c2294b;
+  box-shadow: 0 1px 0 0 #c2294c;
+}
+
+@media screen and (max-width: 600px) {
+  #Fecha_Actual {
+    font-size: 1.3em;
+  }
+
+  #periodo {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .encabezado a {
+    font-size: 1em;
+  }
+
+  #Mensajes {
+    font-size: 0.7em;
+  }
+
+  table {
+    font-size: 0.8em;
+  }
+
+  table td i.material-icons {
+    font-size: 1.8em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Fecha {
+    font-size: 1em;
+  }
+
+  #periodo {
+    font-size: 1em;
+  }
+
+  .encabezado a {
+    font-size: 1em;
+  }
+
+  table {
+    font-size: 0.8em;
+    text-align: center;
+  }
+}

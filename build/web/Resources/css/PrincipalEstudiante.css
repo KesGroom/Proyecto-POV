@@ -1,0 +1,308 @@
+/* Se reinician las margenes y espaciados predeterminados del navegador y se establecen  en 0*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Se le aplica la fuente a todos los elementos del body */
+body{
+    font-family: 'Roboto', sans-serif;
+    /* background-image: url(/img/Fondos/escritorio\ mader.jpg); */
+}
+
+/* Se estiliza el scrollbar (Para el navegador Chrome) */
+body::-webkit-scrollbar{
+    width: 5px;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: black;
+    border-radius: 15px;
+}
+
+.contenedor{
+    width: 100%;
+
+    /* Flex */
+    display: flex;
+    flex-direction: column;
+
+}
+
+.Bread{
+    width: 100%;
+    padding: 0.3rem 2rem;
+    border-bottom: 1px solid rgb(139, 136, 136);
+    background-color: honeydew;
+    position: sticky;
+    top: 0;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.Bread a{
+    color: rgb(126, 119, 119);
+    margin-right: 0.5rem;
+    font-size: 0.8em;
+}
+
+.Bread i{
+    color: rgb(126, 119, 119);
+    margin-right: 0.5rem;
+    font-size: 0.8em;
+}
+
+.Bread a:hover{
+    color: #b71c1c;
+}
+
+.contenedorEncabezado{
+    width: 100%;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.encabezado{
+    width: 40%;
+    padding: 1rem 2rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.encabezado .widget{
+    width: 100%;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+}
+
+.encabezado .widget .fecha{
+    width: 25%;
+    border: 1px solid rgb(105, 103, 103);
+    border-radius: 5px 5px 5px 5px;
+    margin-right: 3rem;
+
+    /* Flex */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.encabezado .widget .fecha .tituloCalendar{
+    background-color: #b71c1c;
+    width: 100%;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px 5px 0 0;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.encabezado .widget .fecha .diaCalendar{
+    width: 100%;
+
+    /* Felx */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.encabezado .widget .fecha .diaCalendar .dia{
+    font-size: 3em;
+}
+
+.encabezado .widget .fecha .diaCalendar .diaSemana{
+    margin-top: -1rem;
+    margin-bottom: 0.5rem;
+}
+
+.encabezado .widget .reloj{
+    width: 50%;
+    
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.encabezado .widget p{
+    margin-right: 0.5rem;
+}
+
+.encabezado .widget .reloj .horas,
+.encabezado .widget .reloj .minutos{
+
+    font-size: 5em;
+
+}
+
+.encabezado .widget .reloj .caja-segundos{
+
+    width: 50%;
+
+    /* Flex */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.encabezado .widget .reloj .caja-segundos .segundos
+{
+    font-size: 2.5em;
+    
+}
+
+.encabezado .widget .reloj .caja-segundos .ampm
+{
+    font-size: 1.5em;
+    margin-bottom: -1rem;
+    
+}
+
+.encabezado .widget .reloj .separador{
+    font-size: 2em;
+}
+
+.mensajeContenedor{
+    width: 60%;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+#mensaje{
+    font-size: 1em;
+}
+
+.mensajeContenedor hr{
+    height: 0.15rem;
+    border: none;
+    background-color: rgb(109, 87, 87);
+}
+.mensajeContenedor .mensaje{
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.tituloSeccion{
+    text-align:left;
+    margin-left: 6rem;
+}
+
+.horario{
+    width: 100%;
+    padding: 1rem;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.horario .Actividades{
+    width: 40%;
+}
+.horario table{
+    width: 55%;
+}
+
+.Actividades i{
+    font-size: 1.5em;
+}
+
+.Actividades .collapsible-header{
+    width: 100%;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.today{
+   background-color: rgba(223, 185, 60, 0.863);
+   color: white; 
+   width: 10rem;
+}
+
+/* mediaqueries */
+@media screen and (max-width: 995px){
+    .encabezado{
+        width: 50%;
+    }
+
+    .mensajeContenedor{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 850px){
+    .encabezado{
+        width: 60%;
+    }
+
+    .mensajeContenedor{
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .contenedorEncabezado{
+        flex-direction: column;
+    }
+
+    .encabezado{
+        width: 80%;
+    }
+
+    .encabezado .widget{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mensajeContenedor{
+        width: 100%;
+    }
+
+    .horario{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .horario table{
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .horario .Actividades{
+        width: 80%;
+        margin-bottom: 2rem;
+    }
+}

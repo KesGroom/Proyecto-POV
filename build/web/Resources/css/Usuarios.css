@@ -1,0 +1,69 @@
+
+/* 
+    Created on : 29/05/2020, 12:32:04 PM
+    Author     : POV Gaes7
+*/
+
+/* Se reinician las margenes y espaciados predeterminados del navegador y se establecen  en 0*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Se le aplica la fuente a todos los elementos del body */
+body{
+    font-family: 'Roboto', sans-serif;
+    /* background-image: url(/img/Fondos/escritorio\ mader.jpg); */
+}
+
+/* Se estiliza el scrollbar (Para el navegador Chrome) */
+body::-webkit-scrollbar{
+    width: 5px;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: black;
+    border-radius: 15px;
+}
+
+.contenedor{
+    width: 100%;
+
+    /* Flex */
+    display: flex;
+    flex-direction: column;
+
+}
+
+.Bread{
+    width: 100%;
+    padding: 0.3rem 2rem;
+    border-bottom: 1px solid rgb(139, 136, 136);
+    background-color: honeydew;
+    position: fixed;
+    top: 0;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.Bread a{
+    color: rgb(126, 119, 119);
+    margin-right: 0.5rem;
+    font-size: 0.8em;
+}
+
+.Bread i{
+    color: rgb(126, 119, 119);
+    margin-right: 0.5rem;
+    font-size: 0.8em;
+}
+
+.Bread a:hover{
+    color: #b71c1c;
+}
