@@ -5,10 +5,10 @@
  */
 package Controladores;
 
-import Entidades.Roles;
-import Entidades.Tipos;
-import Entidades.Usuarios;
-import Facade.UsuariosFacade;
+import Entidades.Rol;
+import Entidades.Tipo;
+import Entidades.Usuario;
+import Facade.UsuarioFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -27,18 +27,18 @@ public class usuarioControlador implements Serializable {
      * Creates a new instance of usuarioControlador
      */
     public usuarioControlador() {
-        rol = new Roles();
-        tipo = new Tipos();
-        usuario = new Usuarios();
-        usuarioFacade = new UsuariosFacade();
+        rol = new Rol();
+        tipo = new Tipo();
+        usuario = new Usuario();
+        usuarioFacade = new UsuarioFacade();
     }
 
-    private Usuarios usuario;
-    private Roles rol;
-    private Tipos tipo;
+    private Usuario usuario;
+    private Rol rol;
+    private Tipo tipo;
 
     @EJB
-    UsuariosFacade usuarioFacade;
+    UsuarioFacade usuarioFacade;
 
     public void registrarUsu() {
         usuario.setIdRoles(rol);
@@ -46,7 +46,7 @@ public class usuarioControlador implements Serializable {
         usuarioFacade.create(usuario);
     }
 
-    public void preActualizar(Usuarios usuarioActualizar) {
+    public void preActualizar(Usuario usuarioActualizar) {
         rol = usuarioActualizar.getIdRoles();
         tipo = usuarioActualizar.getIdTipo();
         usuario = usuarioActualizar;
@@ -62,31 +62,31 @@ public class usuarioControlador implements Serializable {
         usuarioFacade.remove(usuario);
     }
 
-    public List<Usuarios> consultarUsuarios() {
+    public List<Usuario> consultarUsuarios() {
         return usuarioFacade.findAll();
     }
 
-    public Usuarios getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuarios usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
-    public Roles getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(Roles rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 
-    public Tipos getTipo() {
+    public Tipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(Tipos tipo) {
+    public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
     

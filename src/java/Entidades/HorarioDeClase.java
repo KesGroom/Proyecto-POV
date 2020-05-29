@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author JSAntiago
+ * @author kesgr
  */
 @Entity
 @Table(name = "horario_de_clase")

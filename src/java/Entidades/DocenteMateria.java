@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author JSAntiago
+ * @author kesgr
  */
 @Entity
 @Table(name = "docente_materia")
@@ -43,23 +43,23 @@ public class DocenteMateria implements Serializable {
     @Column(name = "Id_DocMat")
     private Integer idDocMat;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDocenteMateria", fetch = FetchType.LAZY)
-    private List<Actividades> actividadesList;
+    private List<Actividad> actividadList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "docenteMateria", fetch = FetchType.LAZY)
-    private List<RegistroNotas> registroNotasList;
+    private List<RegistroNota> registroNotaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "docenteMateria", fetch = FetchType.LAZY)
     private List<RegistroAsistencia> registroAsistenciaList;
     @JoinColumn(name = "Id_Docente", referencedColumnName = "Id_Docente")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Docentes idDocente;
+    private Docente idDocente;
     @JoinColumn(name = "Id_Materia", referencedColumnName = "Id_Materia")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Materias idMateria;
+    private Materia idMateria;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "docenteMateria", fetch = FetchType.LAZY)
     private List<AgendaWeb> agendaWebList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "docenteMateria", fetch = FetchType.LAZY)
     private List<HorarioDeClase> horarioDeClaseList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "docenteAsigna", fetch = FetchType.LAZY)
-    private List<PlanesMejoramiento> planesMejoramientoList;
+    private List<PlanMejoramiento> planMejoramientoList;
 
     public DocenteMateria() {
     }
@@ -77,21 +77,21 @@ public class DocenteMateria implements Serializable {
     }
 
     @XmlTransient
-    public List<Actividades> getActividadesList() {
-        return actividadesList;
+    public List<Actividad> getActividadList() {
+        return actividadList;
     }
 
-    public void setActividadesList(List<Actividades> actividadesList) {
-        this.actividadesList = actividadesList;
+    public void setActividadList(List<Actividad> actividadList) {
+        this.actividadList = actividadList;
     }
 
     @XmlTransient
-    public List<RegistroNotas> getRegistroNotasList() {
-        return registroNotasList;
+    public List<RegistroNota> getRegistroNotaList() {
+        return registroNotaList;
     }
 
-    public void setRegistroNotasList(List<RegistroNotas> registroNotasList) {
-        this.registroNotasList = registroNotasList;
+    public void setRegistroNotaList(List<RegistroNota> registroNotaList) {
+        this.registroNotaList = registroNotaList;
     }
 
     @XmlTransient
@@ -103,19 +103,19 @@ public class DocenteMateria implements Serializable {
         this.registroAsistenciaList = registroAsistenciaList;
     }
 
-    public Docentes getIdDocente() {
+    public Docente getIdDocente() {
         return idDocente;
     }
 
-    public void setIdDocente(Docentes idDocente) {
+    public void setIdDocente(Docente idDocente) {
         this.idDocente = idDocente;
     }
 
-    public Materias getIdMateria() {
+    public Materia getIdMateria() {
         return idMateria;
     }
 
-    public void setIdMateria(Materias idMateria) {
+    public void setIdMateria(Materia idMateria) {
         this.idMateria = idMateria;
     }
 
@@ -138,12 +138,12 @@ public class DocenteMateria implements Serializable {
     }
 
     @XmlTransient
-    public List<PlanesMejoramiento> getPlanesMejoramientoList() {
-        return planesMejoramientoList;
+    public List<PlanMejoramiento> getPlanMejoramientoList() {
+        return planMejoramientoList;
     }
 
-    public void setPlanesMejoramientoList(List<PlanesMejoramiento> planesMejoramientoList) {
-        this.planesMejoramientoList = planesMejoramientoList;
+    public void setPlanMejoramientoList(List<PlanMejoramiento> planMejoramientoList) {
+        this.planMejoramientoList = planMejoramientoList;
     }
 
     @Override

@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author JSAntiago
+ * @author kesgr
  */
 @Entity
 @Table(name = "atencioncurso")
@@ -61,10 +61,10 @@ public class Atencioncurso implements Serializable {
     private Date horaFinalAtencion;
     @JoinColumn(name = "Curso", referencedColumnName = "Id_Curso")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cursos curso;
+    private Curso curso;
     @JoinColumn(name = "DocenteACargo", referencedColumnName = "Id_Docente")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Docentes docenteACargo;
+    private Docente docenteACargo;
 
     public Atencioncurso() {
     }
@@ -112,19 +112,19 @@ public class Atencioncurso implements Serializable {
         this.horaFinalAtencion = horaFinalAtencion;
     }
 
-    public Cursos getCurso() {
+    public Curso getCurso() {
         return curso;
     }
 
-    public void setCurso(Cursos curso) {
+    public void setCurso(Curso curso) {
         this.curso = curso;
     }
 
-    public Docentes getDocenteACargo() {
+    public Docente getDocenteACargo() {
         return docenteACargo;
     }
 
-    public void setDocenteACargo(Docentes docenteACargo) {
+    public void setDocenteACargo(Docente docenteACargo) {
         this.docenteACargo = docenteACargo;
     }
 

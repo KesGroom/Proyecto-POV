@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author JSAntiago
+ * @author kesgr
  */
 @Entity
 @Table(name = "bitacora_servicio_social")
@@ -60,13 +60,13 @@ public class BitacoraServicioSocial implements Serializable {
     private String laboresRealizadas;
     @JoinColumn(name = "Coordinador", referencedColumnName = "Id_Coordinador")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Coordinadores coordinador;
+    private Coordinador coordinador;
     @JoinColumn(name = "Estudiante", referencedColumnName = "Id_Estudiante")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Estudiantes estudiante;
+    private Estudiante estudiante;
     @JoinColumn(name = "Zona_de_Servicio", referencedColumnName = "Id_ZonaSS")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private ZonasServicioSocial zonadeServicio;
+    private ZonaServicioSocial zonadeServicio;
 
     public BitacoraServicioSocial() {
     }
@@ -115,27 +115,27 @@ public class BitacoraServicioSocial implements Serializable {
         this.laboresRealizadas = laboresRealizadas;
     }
 
-    public Coordinadores getCoordinador() {
+    public Coordinador getCoordinador() {
         return coordinador;
     }
 
-    public void setCoordinador(Coordinadores coordinador) {
+    public void setCoordinador(Coordinador coordinador) {
         this.coordinador = coordinador;
     }
 
-    public Estudiantes getEstudiante() {
+    public Estudiante getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(Estudiantes estudiante) {
+    public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
     }
 
-    public ZonasServicioSocial getZonadeServicio() {
+    public ZonaServicioSocial getZonadeServicio() {
         return zonadeServicio;
     }
 
-    public void setZonadeServicio(ZonasServicioSocial zonadeServicio) {
+    public void setZonadeServicio(ZonaServicioSocial zonadeServicio) {
         this.zonadeServicio = zonadeServicio;
     }
 

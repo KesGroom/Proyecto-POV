@@ -5,8 +5,8 @@
  */
 package Controladores;
 
-import Entidades.Roles;
-import Facade.RolesFacade;
+import Entidades.Rol;
+import Facade.RolFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -25,24 +25,24 @@ public class rolControlador implements Serializable {
      * Creates a new instance of rolControlador
      */
     public rolControlador() {
-        rol = new Roles();
-        rolFacade = new RolesFacade();
+        rol = new Rol();
+        rolFacade = new RolFacade();
     }
-    private Roles rol;
+    private Rol rol;
     
     @EJB 
-    RolesFacade rolFacade;
+    RolFacade rolFacade;
     
    
-    public List<Roles> consultarRol(){
+    public List<Rol> consultarRol(){
         return rolFacade.findAll();
     }
     
-    public Roles getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(Roles rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
     

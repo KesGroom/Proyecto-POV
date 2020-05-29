@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author JSAntiago
+ * @author kesgr
  */
 @Entity
 @Table(name = "pqrs")
@@ -64,10 +64,10 @@ public class Pqrs implements Serializable {
     private String respuesta;
     @JoinColumn(name = "Id_Acudiente", referencedColumnName = "Id_Acudiente")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Acudientes idAcudiente;
+    private Acudiente idAcudiente;
     @JoinColumn(name = "Id_Coordinador", referencedColumnName = "Id_Coordinador")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Coordinadores idCoordinador;
+    private Coordinador idCoordinador;
 
     public Pqrs() {
     }
@@ -121,19 +121,19 @@ public class Pqrs implements Serializable {
         this.respuesta = respuesta;
     }
 
-    public Acudientes getIdAcudiente() {
+    public Acudiente getIdAcudiente() {
         return idAcudiente;
     }
 
-    public void setIdAcudiente(Acudientes idAcudiente) {
+    public void setIdAcudiente(Acudiente idAcudiente) {
         this.idAcudiente = idAcudiente;
     }
 
-    public Coordinadores getIdCoordinador() {
+    public Coordinador getIdCoordinador() {
         return idCoordinador;
     }
 
-    public void setIdCoordinador(Coordinadores idCoordinador) {
+    public void setIdCoordinador(Coordinador idCoordinador) {
         this.idCoordinador = idCoordinador;
     }
 

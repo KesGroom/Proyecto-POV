@@ -5,9 +5,12 @@
  */
 package Controladores;
 
+import Entidades.Grado;
+import Facade.GradoFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.ejb.EJB;
 
 /**
  *
@@ -21,6 +24,13 @@ public class GradoController implements Serializable {
      * Creates a new instance of GradoController
      */
     public GradoController() {
+        grado = new Grado();
+        gradoFacade = new GradoFacade();
     }
+    
+    Grado grado;
+    
+    @EJB
+    GradoFacade gradoFacade;
     
 }

@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author JSAntiago
+ * @author kesgr
  */
 @Entity
 @Table(name = "agenda_web")
@@ -55,16 +55,16 @@ public class AgendaWeb implements Serializable {
     private String descripcion;
     @JoinColumn(name = "Actividad", referencedColumnName = "Id_Actividad")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Actividades actividad;
+    private Actividad actividad;
     @JoinColumn(name = "DocenteMateria", referencedColumnName = "Id_DocMat")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private DocenteMateria docenteMateria;
     @JoinColumn(name = "Estudiante", referencedColumnName = "Id_Estudiante")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Estudiantes estudiante;
+    private Estudiante estudiante;
     @JoinColumn(name = "Plan_Mejoramiento", referencedColumnName = "Id_Plan_Mejoramiento")
     @ManyToOne(fetch = FetchType.LAZY)
-    private PlanesMejoramiento planMejoramiento;
+    private PlanMejoramiento planMejoramiento;
 
     public AgendaWeb() {
     }
@@ -103,11 +103,11 @@ public class AgendaWeb implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Actividades getActividad() {
+    public Actividad getActividad() {
         return actividad;
     }
 
-    public void setActividad(Actividades actividad) {
+    public void setActividad(Actividad actividad) {
         this.actividad = actividad;
     }
 
@@ -119,19 +119,19 @@ public class AgendaWeb implements Serializable {
         this.docenteMateria = docenteMateria;
     }
 
-    public Estudiantes getEstudiante() {
+    public Estudiante getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(Estudiantes estudiante) {
+    public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
     }
 
-    public PlanesMejoramiento getPlanMejoramiento() {
+    public PlanMejoramiento getPlanMejoramiento() {
         return planMejoramiento;
     }
 
-    public void setPlanMejoramiento(PlanesMejoramiento planMejoramiento) {
+    public void setPlanMejoramiento(PlanMejoramiento planMejoramiento) {
         this.planMejoramiento = planMejoramiento;
     }
 

@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author JSAntiago
+ * @author kesgr
  */
 @Entity
 @Table(name = "curso_docente")
@@ -44,10 +44,10 @@ public class CursoDocente implements Serializable {
     private Integer idDocCur;
     @JoinColumn(name = "Id_Curso", referencedColumnName = "Id_Curso")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cursos idCurso;
+    private Curso idCurso;
     @JoinColumn(name = "Id_Docente", referencedColumnName = "Id_Docente")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Docentes idDocente;
+    private Docente idDocente;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "docenteCurso", fetch = FetchType.LAZY)
     private List<HorarioDeClase> horarioDeClaseList;
 
@@ -66,19 +66,19 @@ public class CursoDocente implements Serializable {
         this.idDocCur = idDocCur;
     }
 
-    public Cursos getIdCurso() {
+    public Curso getIdCurso() {
         return idCurso;
     }
 
-    public void setIdCurso(Cursos idCurso) {
+    public void setIdCurso(Curso idCurso) {
         this.idCurso = idCurso;
     }
 
-    public Docentes getIdDocente() {
+    public Docente getIdDocente() {
         return idDocente;
     }
 
-    public void setIdDocente(Docentes idDocente) {
+    public void setIdDocente(Docente idDocente) {
         this.idDocente = idDocente;
     }
 

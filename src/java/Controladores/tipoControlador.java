@@ -5,8 +5,8 @@
  */
 package Controladores;
 
-import Entidades.Tipos;
-import Facade.TiposFacade;
+import Entidades.Tipo;
+import Facade.TipoFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -25,23 +25,23 @@ public class tipoControlador implements Serializable {
      * Creates a new instance of tipoControlador
      */
     public tipoControlador() {
-        tipo = new Tipos();
-        tipoFacade = new TiposFacade();
+        tipo = new Tipo();
+        tipoFacade = new TipoFacade();
     }
-     private Tipos tipo;
+     private Tipo tipo;
      
      @EJB
-     TiposFacade tipoFacade;
+     TipoFacade tipoFacade;
      
-     public List<Tipos> consultarTipo(){
+     public List<Tipo> consultarTipo(){
          return tipoFacade.findAll();
      }
 
-    public Tipos getTipo() {
+    public Tipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(Tipos tipo) {
+    public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
      
