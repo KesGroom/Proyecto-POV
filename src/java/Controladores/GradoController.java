@@ -10,6 +10,7 @@ import Facade.GradoFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 
 /**
@@ -28,7 +29,7 @@ public class GradoController implements Serializable {
         gradoFacade = new GradoFacade();
     }
     
-    Grado grado;
+    private Grado grado;
     
     @EJB
     GradoFacade gradoFacade;
@@ -44,5 +45,23 @@ public class GradoController implements Serializable {
     public void actualizar(){
         gradoFacade.edit(grado);
     }
+    
+    public void eliminar(Grado gradoEliminar){
+        gradoFacade.remove(gradoEliminar);
+    }
+    
+    public List<Grado> consultarTodos(){
+        return gradoFacade.findAll();
+    }
+
+    public Grado getGrado() {
+        return grado;
+    }
+
+    public void setGrado(Grado grado) {
+        this.grado = grado;
+    }
+    
+    
     
 }
