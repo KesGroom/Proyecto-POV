@@ -33,4 +33,16 @@ public class GradoController implements Serializable {
     @EJB
     GradoFacade gradoFacade;
     
+    public void registrar(){
+        gradoFacade.create(grado);
+    }
+    
+    public void preActualizar(Grado gradoActualizar){
+        grado = gradoActualizar;
+    }
+    
+    public void actualizar(){
+        gradoFacade.edit(grado);
+    }
+    
 }
