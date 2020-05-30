@@ -67,3 +67,54 @@ body::-webkit-scrollbar-thumb{
 .Bread a:hover{
     color: #b71c1c;
 }
+
+.activador{
+    background-color: #b71c1c;
+    width: 25px;
+    height: 25px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    margin-top: 25px;
+}
+
+main{
+    padding: 0 50px;
+}
+
+main .titulo{
+    font-size: 48px;
+    margin: 45px 0 20px 8px;
+}
+
+main .tabs{
+    border: 1px solid #d3d0d0; 
+    box-shadow: 0 2.5px 4.5px 0 #808080;
+}
+
+main .tabs .tab a{
+    color: black;
+}
+
+main .tabs .tab a:hover, 
+main .tabs .tab a.active {
+    background-color: transparent;
+    color: #b71c1c;
+}
+
+/*main .tabs .tab a.active{
+    border-bottom: 2px solid #b71c1c;
+}*/
+
+main .tabs .indicator{
+    background-color: #b71c1c;
+}
+
+main .fondoTab{
+    background-color: #d5d3d3;
+    width: 98.25%;
+    margin-left:0.9%;
+    
+}
