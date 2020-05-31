@@ -33,7 +33,34 @@ public class tipoControlador implements Serializable {
      @EJB
      TipoFacade tipoFacade;
      
-     public List<Tipo> consultarTipo(){
+     public String registrar(){
+         
+         tipoFacade.create(tipo);
+         
+         return "si/Coordinador/Tipos";
+     }
+     
+     public String preActualizar(Tipo tipoActualizar){
+         tipo = tipoActualizar;
+         
+         return "si/Coordinador/TipoActualizar";
+     }
+     
+     public String actualizar(){
+         tipoFacade.edit(tipo);
+         
+         return "si/Coordinador/Tipos";
+     }
+     
+     public void eliminar(Tipo tipoEliminar){
+         tipoFacade.remove(tipoEliminar);
+     }
+     
+     public void consultarId(int id){
+         tipoFacade.find(id);
+     }
+     
+     public List<Tipo> consultarTodos(){
          return tipoFacade.findAll();
      }
 

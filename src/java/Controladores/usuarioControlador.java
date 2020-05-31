@@ -9,6 +9,8 @@ import Entidades.Rol;
 import Entidades.Tipo;
 import Entidades.Usuario;
 import Facade.UsuarioFacade;
+import Facade.RolFacade;
+import Facade.TipoFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -39,10 +41,16 @@ public class usuarioControlador implements Serializable {
 
     @EJB
     UsuarioFacade usuarioFacade;
+    
+    @EJB
+    RolFacade rolFacade;
+    
+    @EJB
+    TipoFacade tipoFacade;
 
     public void registrarUsu() {
-        usuario.setIdRoles(rol);
-        usuario.setIdTipo(tipo);
+        usuario.setIdRoles(rolFacade.find(rol.getIdRoles()));
+        usuario.setIdTipo(tipoFacade.find(tipo.getIdTipo()));
         usuarioFacade.create(usuario);
     }
 

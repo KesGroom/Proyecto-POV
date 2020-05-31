@@ -34,8 +34,33 @@ public class rolControlador implements Serializable {
     RolFacade rolFacade;
     
    
+    public String registrar(){
+        rolFacade.create(rol);
+        
+        return "si/Coordinador/Roles";
+    }
+    
+    public String preActualizar(Rol rolActualizar){
+        rol = rolActualizar;
+        return "si/Coordinador/RolActualizar";
+    }
+    
+    public String actualizar(){
+        rolFacade.edit(rol);
+        
+        return "si/Coordinador/Roles";
+    }
+    
+    public void eliminar(Rol rolEliminar){
+        rolFacade.remove(rolEliminar);
+    }
+    
     public List<Rol> consultarRol(){
         return rolFacade.findAll();
+    }
+    
+    public void consultarId(int id){
+        rol = rolFacade.find(id);
     }
     
     public Rol getRol() {
