@@ -58,9 +58,9 @@ body::-webkit-scrollbar-thumb{
     font-size: 0.8em;
 }
 
-.Bread i{
+.Bread ion-icon{
     color: rgb(126, 119, 119);
-    margin-right: 0.5rem;
+    margin-right: 0.8rem;
     font-size: 0.8em;
 }
 
@@ -72,12 +72,19 @@ body::-webkit-scrollbar-thumb{
     background-color: #b71c1c;
     width: 25px;
     height: 25px;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    border-radius: 5px 0 5px 0;
     
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
 
-    margin-top: 25px;
+.activador ion-icon{
+    font-size: 32px;
+    color:white;
 }
 
 main{
