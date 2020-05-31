@@ -3,15 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/JSAntiago/Documents/NetBeansProjects/Proyecto-POV/web/si/Coordinador/Usuarios.xhtml</file>
             <file>file:/C:/Users/JSAntiago/Documents/NetBeansProjects/Proyecto-POV/web/si/Coordinador/ZonasSS.xhtml</file>
-=======
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/web/si/Coordinador/Usuarios.xhtml</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/web/si/Estudiante/ZonasSS.xhtml</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/web/Resources/css/Usuarios.css</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/web/si/Coordinador/ZonasSS.xhtml</file>
->>>>>>> a1202ed33a8079538f96fce776d42933a15a01b5
+            <file>file:/C:/Users/JSAntiago/Documents/NetBeansProjects/Proyecto-POV/src/java/Controladores/zonasControlador.java</file>
         </group>
     </open-files>
 </project-private>
