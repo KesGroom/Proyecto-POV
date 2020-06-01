@@ -8,7 +8,7 @@
         <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
         <!-- Se vincula los estilos css específicos de la página-->
-        <link href="../../Resources/css/Users.css" rel="stylesheet" type="text/css"/>
+        <link href="../../Resources/css/UserPage.css" rel="stylesheet" type="text/css"/>
         <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
         de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que
         la página inicie para evitar fallos-->
@@ -23,11 +23,13 @@
         <div class="Bread">
             <a href="">Principal</a>
             <ion-icon name="chevron-forward-outline"></ion-icon>
-            <a href="#">Usuario</a>
+            <a href="#">Usuarios</a>
         </div>
 
-        <div class="activador tooltipped" id="actAddUser" data-position="bottom" data-tooltip="Añadir usuario"><ion-icon name="person-add"></ion-icon></div>
-        <div class="registroUsuario" id="formAddUser">
+        <div class="activador tooltipped" id="actAddUser" data-position="bottom" data-tooltip="Añadir usuario"><ion-icon id="iconUser" name="person-add"></ion-icon></div>
+        <div class="activador tooltipped" id="actAddRol" data-position="bottom" data-tooltip="Añadir rol"><ion-icon id="iconRol" name="body"></ion-icon></div>
+        <div class="activador tooltipped" id="actAddTipo" data-position="bottom" data-tooltip="Añadir tipo de documento"><ion-icon id="iconTipo" name="card"></ion-icon></div>
+        <div class="registro" id="formAddUser">
 
             <f:view>
 
@@ -57,8 +59,6 @@
                         <h:inputText id="correoElectronico" value="#{usuarioControlador.usuario.correoElectronico}" title="CorreoElectronico" required="true" requiredMessage="The CorreoElectronico field is required."/>
                         <h:outputLabel value="Contrasenna:" for="contrasenna" />
                         <h:inputText id="contrasenna" value="#{usuarioControlador.usuario.contrasenna}" title="Contrasenna" required="true" requiredMessage="The Contrasenna field is required."/>
-                        <h:outputLabel value="Foto:" for="foto" />
-                        <h:inputText id="foto" value="#{usuarioControlador.usuario.foto}" title="Foto" />
                         <h:outputLabel value="IdRoles:" for="idRoles" />
                         <h:selectOneMenu id="idRoles" value="#{usuarioControlador.rol.idRoles}" title="IdRoles" required="true" requiredMessage="The IdRoles field is required.">
                             <!-- TODO: update below reference to list of available items-->
@@ -81,11 +81,49 @@
             </f:view>
 
         </div>
+        <div class="registro" id="formAddRol">
+            <f:view>
+                <h3 class="tituloFormulario">Registrar rol</h3>
+                <h:form>
+
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Rol:" for="rol" />
+                        <h:inputText id="rol" value="#{rolControlador.rol.rol}" title="Rol" required="true" requiredMessage="The Rol field is required."/>
+                    </h:panelGrid>
+                    <div class="botonesControl">
+                        <input type="reset" class=" red darken-4 waves-effect waves-light" value="Vaciar"></input>
+                        <h:commandButton value="Registrar" styleClass=" red darken-4 waves-effect waves-light" action="#{rolControlador.registrar()}"></h:commandButton>
+                    </div>
+                </h:form>
+            </f:view>
+        </div>
+
+        <div class="registro" id="formAddTipo">
+            <f:view>
+                <h3 class="tituloFormulario">Registrar tipo de documento</h3>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Tipo de documento:" for="tipo" />
+                        <h:inputText id="tipo" value="#{usuarioControlador.tipo.tipo}" title="Tipo" required="true" requiredMessage="The Tipo field is required."/>
+                    </h:panelGrid>
+                    <div class="botonesControl">
+                        <input type="reset" class=" red darken-4 waves-effect waves-light" value="Vaciar"></input>
+                        <h:commandButton value="Registrar" styleClass=" red darken-4 waves-effect waves-light" action="#{tipoControlador.registrar()}"></h:commandButton>
+                    </div>
+                </h:form>
+            </f:view>
+        </div>
 
         <main>
 
+            <div class="contenedorTitulos">
+                <a href="Roles.xhtml" class="subTitulo">Roles</a>
+                <ion-icon name="chevron-back-outline"></ion-icon>
+                <a href="Usuarios.xhtml" class="titulo">Usuarios</a>
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+                <a href="Tipos.xhtml" class="subTitulo">Tipos</a>
+            </div>
 
-            <h3 class="titulo">Usuarios</h3>
 
             <div class="row">
                 <div class="col s12">
@@ -98,14 +136,14 @@
                     </ul>
                 </div>
                 <div id="todos" class="col fondoTab">
-                
+
                     <f:view>
 
 
                         <h:form>
-                            
-                            <h:dataTable value="#{usuarioControlador.consultarUsuarios()}" var="usuario">
-                                
+
+                            <h:dataTable styleClass="centered" value="#{usuarioControlador.consultarUsuarios()}" var="usuario">
+
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="NUIP"/>
@@ -156,7 +194,7 @@
                                     </f:facet>
                                     <h:outputText value="#{usuario.correoElectronico}"/>
                                 </h:column>
-                                
+
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="Rol"/>
@@ -194,7 +232,7 @@
         <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
         <!-- Se vincula los scripts propios de la página-->
-        <script src="../../Resources/js/Users.js" type="text/javascript"></script>
+        <script src="../../Resources/js/UsersPage.js" type="text/javascript"></script>
     </h:body>
 </html>
 
