@@ -49,7 +49,7 @@ public class RegistroNota implements Serializable {
     private Actividad actividad;
     @JoinColumn(name = "Plan_Mejoramiento", referencedColumnName = "Id_Plan_Mejoramiento")
     @ManyToOne(fetch = FetchType.LAZY)
-    private PlanMejoramiento planMejoramiento;
+    private PlanesMejoramiento planMejoramiento;
     @JoinColumn(name = "DocenteMateria", referencedColumnName = "Id_DocMat")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private DocenteMateria docenteMateria;
@@ -96,11 +96,11 @@ public class RegistroNota implements Serializable {
         this.actividad = actividad;
     }
 
-    public PlanMejoramiento getPlanMejoramiento() {
+    public PlanesMejoramiento getPlanMejoramiento() {
         return planMejoramiento;
     }
 
-    public void setPlanMejoramiento(PlanMejoramiento planMejoramiento) {
+    public void setPlanMejoramiento(PlanesMejoramiento planMejoramiento) {
         this.planMejoramiento = planMejoramiento;
     }
 

@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import Entidades.PlanMejoramiento;
+import Entidades.PlanesMejoramiento;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author kesgr
  */
 @Stateless
-public class PlanMejoramientoFacade extends AbstractFacade<PlanMejoramiento> {
+public class PlanesMejoramientoFacade extends AbstractFacade<PlanesMejoramiento> {
 
     @PersistenceContext(unitName = "PovPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class PlanMejoramientoFacade extends AbstractFacade<PlanMejoramiento> {
         return em;
     }
 
-    public PlanMejoramientoFacade() {
-        super(PlanMejoramiento.class);
+    public PlanesMejoramientoFacade() {
+        super(PlanesMejoramiento.class);
     }
     
 }

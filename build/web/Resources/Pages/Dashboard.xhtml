@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
         <link href="../css/materialize.min.css" rel="stylesheet" type="text/css"/>
@@ -17,6 +19,7 @@
         <!-- Nombre que se visualizará en el navegador -->
         <title>DashBoard</title>
     </h:head>
+
     <h:body>
         <header>
             <div class="header" id="header">
@@ -24,25 +27,68 @@
                     <a href="#" class="toogle_btn"><ion-icon name="menu"></ion-icon></a>
                     <a href="#"><ion-icon name="notifications-circle"></ion-icon></a>
                     <a href="#"><ion-icon name="person-circle"></ion-icon></a>
+                    <h:form>
+                        <h:commandLink action="#{sesionControlador.cerrarSesion()}" 
+                                       style="color:#fff;" value=''><ion-icon name="log-out"></ion-icon></h:commandLink> 
+                    </h:form>
+
                 </div>
 
                 <img src="../img/Colegio/LogoCanoNombre.png" alt=""/></div>
         </header>
         <ul id="slide-out" class="sidenav sidenav-fixed show-on-large">
-            <li><div class="user-view">
-                    <div class="background">
-                        
-                    </div>
-                    <a href="#user"><img class="circle" src="../img/imgPerfil/Pelirojo.png" alt=""/></a>
-                    
-                    <a href="#name"><span class="white-text name">Nombre</span></a>
-                    <a href="#email"><span class="white-text email">ROL</span></a>
-                </div></li>
-            <li>Agregue menú dinámico aquí</li>
+
+            <li><h:form id="form-menu">
+                    <li><div class="user-view">
+                            <div class="background">
+
+                            </div>
+
+                            <img class="circle" src="#{sesionControlador.usuario.foto}" alt=""/>
+                            <a href="#name"><span class="white-text name"><h:outputText value="#{sesionControlador.usuario.nombre}"></h:outputText></span></a>
+                            <a href="#email"><span class="white-text email"><h:outputText value="#{sesionControlador.rolSeleccionado.rol}"/></span></a>
+                        </div></li>
+                    <li >
+
+
+                    </li>
+                    <c:forEach items="#{sesionControlador.rolSeleccionado.rolHasPermisoList}" var="p">
+                        <li>
+                            <c:if test="#{empty p.permiso.permisoPadre}">
+                                <a href="#{p.permiso.url}" class="otro" >
+                                    <div class="PermisoPadre">
+                                        #{p.permiso.nombre}
+                                        <ion-icon name="#{p.permiso.icon}"></ion-icon>
+                                    </div>
+                                </a>
+                                <ul>
+                                    <c:forEach items="#{p.permiso.permisoList}" var="sp">
+                                        <c:forEach items="#{sesionControlador.rolSeleccionado.rolHasPermisoList}" var="op">
+                                            <c:if test="#{sp.permiso.idPermiso eq op.permiso.idPermiso}">
+                                                <li>
+                                                    <a href="#{sp.permiso.url}" class="otro" target="WorksSpace">
+                                                        <div class="OpcionMenu">
+                                                            #{sp.permiso.nombre}
+                                                            <ion-icon name="#{sp.permiso.icon}"></ion-icon>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:forEach>
+                                </ul>
+                            </c:if>
+                        </li>
+                    </c:forEach>
+
+                    <!--<h:outputText value="#{sesionControlador.obtenerMenu()}" escape="false"/> -->
+
+
+                </h:form></li>
         </ul>
 
         <main id="main">
-            <iframe frameborder="0" src="index.html"></iframe>
+            <iframe frameborder="0" src="index.html" name="WorksSpace"></iframe>
         </main>
 
         <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->

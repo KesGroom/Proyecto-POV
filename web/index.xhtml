@@ -70,17 +70,29 @@
                     <div class="modal-content modalContentBox">
                         <h4 class="red darken-4 white-text">Iniciar sesión</h4>
                         <f:view>
-                            <h:form>
-
-                                <p>Número de documento</p>
-                                <h:inputText value="#{usuarioControlador.usuario.numerodeDocumento}"></h:inputText>
-                                <p>Contraseña</p>
-                                <h:inputSecret value="#{usuarioControlador.usuario.contrasenna}"></h:inputSecret>
-
-                                <h:commandButton value="Ingresar" styleClass="waves-effect waves-light" action="#{usuarioControlador.UserLogin()}"></h:commandButton>
-                            </h:form>
+                            
+                            <h:form id="login-form" prependId="false">
+                                    <h:messages showSummary="true" showDetail="true"/>
+                                    <p>Número de documento</p>
+                                    <h:inputText id="login_username" class="form-control"
+                                                 value="#{sesionControlador.documento}" required="true"/>
+                                    <p>Contraseña</p>
+                                    <h:inputSecret id="login_password" class="form-control" 
+                                                   value="#{sesionControlador.clave}" required="true"/>
+                                    
+                                    <div class="">
+                                        <div>
+                                            <h:commandButton action="#{sesionControlador.iniciarSesion()}"
+                                                             styleClass="waves-effect waves-light" 
+                                                             value="Ingresar"/>
+                                        </div>
+                                        <div>
+                                            <a href="Resources/Pages/olvido.xhtml" class="black-text">¿Olvido su contraseña?</a>
+                                        </div>
+                                    </div>
+                                </h:form>
                         </f:view>
-                        <a href="Resources/Pages/olvido.xhtml" class="black-text">¿Olvido su contraseña?</a>
+                        
                     </div>
                 </div>
 

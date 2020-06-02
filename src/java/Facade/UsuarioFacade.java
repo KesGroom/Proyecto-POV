@@ -6,7 +6,6 @@
 package Facade;
 
 import Entidades.Usuario;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -31,10 +30,10 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     public UsuarioFacade() {
         super(Usuario.class);
     }
-
+    
     public List<Usuario> busquedaRol(int rol) {
 
-        Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.idRoles=:rol");
+        Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.idRoles.idRoles=:rol");
         q.setParameter("rol", rol);
 
         return q.getResultList();

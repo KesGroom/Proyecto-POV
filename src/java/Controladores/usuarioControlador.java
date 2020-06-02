@@ -8,9 +8,10 @@ package Controladores;
 import Entidades.Rol;
 import Entidades.Tipo;
 import Entidades.Usuario;
-import Facade.UsuarioFacade;
 import Facade.RolFacade;
 import Facade.TipoFacade;
+import Facade.UsuarioFacade;
+
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -51,10 +52,13 @@ public class usuarioControlador implements Serializable {
     @EJB
     TipoFacade tipoFacade;
 
-    public void registrarUsu() {
+    public String registrarUsu() {
         usuario.setIdRoles(rolFacade.find(rol.getIdRoles()));
         usuario.setIdTipo(tipoFacade.find(tipo.getIdTipo()));
         usuarioFacade.create(usuario);
+        usuario = new Usuario();
+        
+        return "Usuarios";
     }
 
     public void preActualizar(Usuario usuarioActualizar) {
@@ -75,6 +79,10 @@ public class usuarioControlador implements Serializable {
 
     public List<Usuario> consultarUsuarios() {
         return usuarioFacade.findAll();
+    }
+    
+    public List<Usuario> buscarRol(int rol){
+        return usuarioFacade.busquedaRol(rol);
     }
     
     public String UserLogin(){

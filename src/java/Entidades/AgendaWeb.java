@@ -64,7 +64,7 @@ public class AgendaWeb implements Serializable {
     private Estudiante estudiante;
     @JoinColumn(name = "Plan_Mejoramiento", referencedColumnName = "Id_Plan_Mejoramiento")
     @ManyToOne(fetch = FetchType.LAZY)
-    private PlanMejoramiento planMejoramiento;
+    private PlanesMejoramiento planMejoramiento;
 
     public AgendaWeb() {
     }
@@ -127,11 +127,11 @@ public class AgendaWeb implements Serializable {
         this.estudiante = estudiante;
     }
 
-    public PlanMejoramiento getPlanMejoramiento() {
+    public PlanesMejoramiento getPlanMejoramiento() {
         return planMejoramiento;
     }
 
-    public void setPlanMejoramiento(PlanMejoramiento planMejoramiento) {
+    public void setPlanMejoramiento(PlanesMejoramiento planMejoramiento) {
         this.planMejoramiento = planMejoramiento;
     }
 

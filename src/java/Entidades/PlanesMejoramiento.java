@@ -37,12 +37,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "planes_mejoramiento")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PlanMejoramiento.findAll", query = "SELECT p FROM PlanMejoramiento p")
-    , @NamedQuery(name = "PlanMejoramiento.findByIdPlanMejoramiento", query = "SELECT p FROM PlanMejoramiento p WHERE p.idPlanMejoramiento = :idPlanMejoramiento")
-    , @NamedQuery(name = "PlanMejoramiento.findByFechaAsignacion", query = "SELECT p FROM PlanMejoramiento p WHERE p.fechaAsignacion = :fechaAsignacion")
-    , @NamedQuery(name = "PlanMejoramiento.findByFechaEntrega", query = "SELECT p FROM PlanMejoramiento p WHERE p.fechaEntrega = :fechaEntrega")
-    , @NamedQuery(name = "PlanMejoramiento.findByRecursos", query = "SELECT p FROM PlanMejoramiento p WHERE p.recursos = :recursos")})
-public class PlanMejoramiento implements Serializable {
+    @NamedQuery(name = "PlanesMejoramiento.findAll", query = "SELECT p FROM PlanesMejoramiento p")
+    , @NamedQuery(name = "PlanesMejoramiento.findByIdPlanMejoramiento", query = "SELECT p FROM PlanesMejoramiento p WHERE p.idPlanMejoramiento = :idPlanMejoramiento")
+    , @NamedQuery(name = "PlanesMejoramiento.findByFechaAsignacion", query = "SELECT p FROM PlanesMejoramiento p WHERE p.fechaAsignacion = :fechaAsignacion")
+    , @NamedQuery(name = "PlanesMejoramiento.findByFechaEntrega", query = "SELECT p FROM PlanesMejoramiento p WHERE p.fechaEntrega = :fechaEntrega")
+    , @NamedQuery(name = "PlanesMejoramiento.findByRecursos", query = "SELECT p FROM PlanesMejoramiento p WHERE p.recursos = :recursos")})
+public class PlanesMejoramiento implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -77,14 +77,14 @@ public class PlanMejoramiento implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private DocenteMateria docenteAsigna;
 
-    public PlanMejoramiento() {
+    public PlanesMejoramiento() {
     }
 
-    public PlanMejoramiento(Integer idPlanMejoramiento) {
+    public PlanesMejoramiento(Integer idPlanMejoramiento) {
         this.idPlanMejoramiento = idPlanMejoramiento;
     }
 
-    public PlanMejoramiento(Integer idPlanMejoramiento, Date fechaAsignacion, Date fechaEntrega, String descripcion) {
+    public PlanesMejoramiento(Integer idPlanMejoramiento, Date fechaAsignacion, Date fechaEntrega, String descripcion) {
         this.idPlanMejoramiento = idPlanMejoramiento;
         this.fechaAsignacion = fechaAsignacion;
         this.fechaEntrega = fechaEntrega;
@@ -167,10 +167,10 @@ public class PlanMejoramiento implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PlanMejoramiento)) {
+        if (!(object instanceof PlanesMejoramiento)) {
             return false;
         }
-        PlanMejoramiento other = (PlanMejoramiento) object;
+        PlanesMejoramiento other = (PlanesMejoramiento) object;
         if ((this.idPlanMejoramiento == null && other.idPlanMejoramiento != null) || (this.idPlanMejoramiento != null && !this.idPlanMejoramiento.equals(other.idPlanMejoramiento))) {
             return false;
         }
@@ -179,7 +179,7 @@ public class PlanMejoramiento implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.PlanMejoramiento[ idPlanMejoramiento=" + idPlanMejoramiento + " ]";
+        return "Entidades.PlanesMejoramiento[ idPlanMejoramiento=" + idPlanMejoramiento + " ]";
     }
     
 }

@@ -59,7 +59,7 @@ public class DocenteMateria implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "docenteMateria", fetch = FetchType.LAZY)
     private List<HorarioDeClase> horarioDeClaseList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "docenteAsigna", fetch = FetchType.LAZY)
-    private List<PlanMejoramiento> planMejoramientoList;
+    private List<PlanesMejoramiento> planesMejoramientoList;
 
     public DocenteMateria() {
     }
@@ -138,12 +138,12 @@ public class DocenteMateria implements Serializable {
     }
 
     @XmlTransient
-    public List<PlanMejoramiento> getPlanMejoramientoList() {
-        return planMejoramientoList;
+    public List<PlanesMejoramiento> getPlanesMejoramientoList() {
+        return planesMejoramientoList;
     }
 
-    public void setPlanMejoramientoList(List<PlanMejoramiento> planMejoramientoList) {
-        this.planMejoramientoList = planMejoramientoList;
+    public void setPlanesMejoramientoList(List<PlanesMejoramiento> planesMejoramientoList) {
+        this.planesMejoramientoList = planesMejoramientoList;
     }
 
     @Override
