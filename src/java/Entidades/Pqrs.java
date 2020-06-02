@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "pqrs")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pqrs.findAll", query = "SELECT p FROM Pqrs p")
+    @NamedQuery(name = "Pqrs.findAll", query = "SELECT p FROM Pqrs p ORDER BY p.idPQRS Asc")
     , @NamedQuery(name = "Pqrs.findByIdPQRS", query = "SELECT p FROM Pqrs p WHERE p.idPQRS = :idPQRS")
     , @NamedQuery(name = "Pqrs.findByTipo", query = "SELECT p FROM Pqrs p WHERE p.tipo = :tipo")
     , @NamedQuery(name = "Pqrs.findByFecha", query = "SELECT p FROM Pqrs p WHERE p.fecha = :fecha")})

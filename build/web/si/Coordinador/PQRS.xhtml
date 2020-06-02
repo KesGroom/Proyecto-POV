@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
         <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
@@ -17,7 +18,80 @@
         <title>PQRS</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <f:view>
+
+
+            
+
+
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{pqrsControladores.consultarPqrs()}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdPQRS"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idPQRS}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Tipo"/>
+                        </f:facet>
+                        <h:outputText value="#{item.tipo}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Asunto"/>
+                        </f:facet>
+                        <h:outputText value="#{item.asunto}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Fecha"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Respuesta"/>
+                        </f:facet>
+                        <h:outputText value="#{item.respuesta}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdAcudiente"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idAcudiente}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdCoordinador"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idCoordinador}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Acciones">
+                                
+                            </h:outputText>
+                            
+                            
+                        </f:facet>
+                        <h:commandButton value="Responder" class="waves-effect waves-light btn modal-trigger"  action="#{pqrsControladores.responderpqrs(item.idPQRS)}">
+                            
+                        </h:commandButton>
+                    </h:column>
+                </h:dataTable>
+
+</h:form>
+  
+            
+
+            
+        </f:view>
+
         
         <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
         <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>
