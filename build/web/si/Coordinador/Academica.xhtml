@@ -1,12 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
         <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
         <!-- Se vincula los estilos css específicos de la página-->
-
+        <link href="../../Resources/css/AAdministration.css" rel="stylesheet" type="text/css"/>
         <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
         de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que
         la página inicie para evitar fallos-->
@@ -17,7 +18,58 @@
         <title>Administración acádemica</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <div class="Bread">
+            <a href="">Principal</a>
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+            <a href="Academica.xhtml">Administración acádemica</a>
+        </div>
+
+        <div class="activador tooltipped" id="actAddGrado" data-position="bottom" data-tooltip="Añadir Grado"><ion-icon id="iconGrado" name="people"></ion-icon></div>
+        <div class="activador tooltipped" id="actAddCurso" data-position="bottom" data-tooltip="Añadir Curso"><ion-icon id="iconCurso" name="people-circle"></ion-icon></div>
+        <div class="activador tooltipped" id="actAddArea" data-position="bottom" data-tooltip="Añadir Area"><ion-icon id="iconArea" name="folder-open"></ion-icon></div>
+        <div class="activador tooltipped" id="actAddMat" data-position="bottom" data-tooltip="Añadir Materia"><ion-icon id="iconMateria" name="book"></ion-icon></div>
+        
+        <main>
+        <div class="contenedorTitulos">
+                <a href="Cursos.xhtml" class="subTitulo">Cursos</a>
+                <ion-icon name="chevron-back-outline"></ion-icon>
+                <a href="Academica.xhtml" class="titulo">Grados</a>
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+                <a href="Areas.xhtml" class="subTitulo">Areas</a>
+        </div>
+        
+        <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s2"><a class="active" href="#todos">Todos</a></li>
+                    </ul>
+                </div>
+            <div id="todos" class="col fondoTab">
+                <f:view>
+
+
+                    <h:form>
+                        <h:dataTable value="#{gradoController.consultarTodos()}" var="grado">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Id Grado"/>
+                                </f:facet>
+                                <h:outputText value="#{grado.idGrado}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Grado"/>
+                                </f:facet>
+                                <h:outputText value="#{grado.grado}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+
+            </div>
+                
+        </div>
+        </main>
         
         <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
         <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>
@@ -29,6 +81,7 @@
         <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
         <!-- Se vincula los scripts propios de la página-->
+        <script src="../../Resources/js/AAdministration.js" type="text/javascript"></script>
     </h:body>
 </html>
 

@@ -8,7 +8,7 @@
         <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
         <!-- Se vincula los estilos css específicos de la página-->
-        <link href="../../Resources/css/UserPage.css" rel="stylesheet" type="text/css"/>
+        <link href="../../Resources/css/Users.css" rel="stylesheet" type="text/css"/>
         <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
         de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que
         la página inicie para evitar fallos-->
@@ -47,7 +47,7 @@
                         <h:inputText id="apellido" value="#{usuarioControlador.usuario.apellido}" title="Apellido" required="true" requiredMessage="The Apellido field is required."/>
                         <h:outputLabel value="FechadeNacimiento:" for="fechadeNacimiento" />
                         <h:inputText id="fechadeNacimiento" value="#{usuarioControlador.usuario.fechadeNacimiento}" title="FechadeNacimiento" required="true" requiredMessage="The FechadeNacimiento field is required.">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
                         </h:inputText>
                         <h:outputLabel value="Direccion:" for="direccion" />
                         <h:inputText id="direccion" value="#{usuarioControlador.usuario.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
@@ -136,7 +136,7 @@
 
 
                         <h:form>
-                            
+
                             <h:dataTable styleClass="centered" value="#{rolControlador.consultarRol()}" var="Rol">
                                 <h:column>
                                     <f:facet name="header">
@@ -150,7 +150,27 @@
                                     </f:facet>
                                     <h:outputText value="#{Rol.rol}"/>
                                 </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Opciones"/>
+                                    </f:facet>
+                                    <a class="modal-trigger" href="#eliminarRol"><ion-icon id="btnTrash" name="trash-outline"></ion-icon></a>
+                                    
+                                </h:column>
                             </h:dataTable>
+                            <div class="modal" id="eliminarRol">
+                                <div class="modal-content">
+                                    <div class="msgRemoveContent">
+                                        <ion-icon name="alert-circle-outline"></ion-icon>
+                                        <p>Si se elimina este registro no se podrá recuperar</p>
+                                        <p>¿Desea continuar?</p>
+                                        <div class="botonesControl">
+                                            <input type="reset" class="modal-close red darken-4 waves-effect waves-light" id="btnCancelModal" value="No, Cancelar"></input>
+                                            <h:commandButton value="Si, Eliminar" id="btnAcceptModal" styleClass=" green lighten-1 waves-effect waves-light" action="#{rolControlador.eliminar(rolEliminar)}"></h:commandButton>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </h:form>
                     </f:view>
 

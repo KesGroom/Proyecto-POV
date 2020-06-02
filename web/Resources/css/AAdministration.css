@@ -90,26 +90,33 @@ body::-webkit-scrollbar-thumb{
     transition: all 400ms linear;
 }
 
-#actAddUser{
+#actAddGrado{
     top: 45px;
 }
 
-#actAddTipo{
+#actAddCurso{
     top: 90px;
 }
-#actAddRol{
+#actAddArea{
     top: 135px;
 }
+#actAddArea{
+    top: 175px;
+}
 
-#actAddUser.active{
+#actAddGrado.active{
     right: 30%;
 }
 
-#actAddRol.active{
+#actAddCurso.active{
     right: 30%;
 }
 
-#actAddTipo.active{
+#actAddArea.active{
+    right: 30%;
+}
+
+#actAddMateria.active{
     right: 30%;
 }
 
@@ -274,3 +281,67 @@ main .fondoTab{
 .fondoTab table tbody td{
     background-color: white;
 }
+
+.fondoTab table a ion-icon{
+    font-size: 24px;
+    color: black;
+}
+
+#btnTrash:hover{
+    color: red;
+}
+
+.msgRemoveContent{
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal{
+    width: 25rem;
+    height: 25rem;
+}
+
+.modal-content{
+    width: 100%;
+    height: 100%;
+}
+
+.msgRemoveContent ion-icon{
+    color: red;
+    font-size: 160px;
+    
+    margin-bottom: 2rem;
+}
+
+.msgRemoveContent p{
+    font-size: 1em;
+    
+}
+
+.msgRemoveContent .botonesControl{
+    width: 100%;
+    margin-top: 2.5rem;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+} 
+
+.msgRemoveContent .waves-effect input[type="button"],
+.msgRemoveContent .waves-effect input[type="reset"],
+.msgRemoveContent .waves-effect input[type="submit"] {
+    padding:0.6rem 0.8rem;
+    color: white;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+
+

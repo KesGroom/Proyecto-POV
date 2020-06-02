@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
         <link href="Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
@@ -28,14 +29,14 @@
                 <div class="menu">
                     <div class="logo">
                         <a href="#"><img src="Resources/img/Colegio/LogoCanoNombre.png" alt=""/></a>
-                        <a href="#" class="btn-menu" id="btn-menu"><i class="icono fas fa-bars" aria-hidden="true"></i></a>
+                        <a href="#" class="btn-menu" id="btn-menu"><ion-icon name="menu-outline" aria-hidden="true"></ion-icon></a>
                     </div>
 
                     <div class="enlaces" id="enlaces">
-                        <a href="#Noticias"><i class="far fa-newspaper"></i> Noticias</a>
-                        <a href="#Quienes"><i class="fas fa-users"></i> Quienes Somos</a>
-                        <a href="#Contacto"><i class="far fa-envelope"></i> Contactenos</a>
-                        <a href="#Inicio" class="modal-trigger"><i class="fas fa-user-circle"></i> Iniciar Sesión</a>
+                        <a href="#Noticias"><ion-icon name="newspaper"></ion-icon> Noticias</a>
+                        <a href="#Quienes"><ion-icon name="people"></ion-icon> Quienes Somos</a>
+                        <a href="#Contacto"><ion-icon name="mail"></ion-icon> Contactenos</a>
+                        <a href="#Inicio" class="modal-trigger"><ion-icon name="person-circle"></ion-icon> Iniciar Sesión</a>
                     </div>
                 </div>
             </header>
@@ -66,9 +67,20 @@
                 </div>
 
                 <div class="modal" id="Inicio">
-                    <div class="modal-content">
-                        <h4 class="center-align red darken-4 white-text">Añadir formulario aqui</h4>
+                    <div class="modal-content modalContentBox">
+                        <h4 class="red darken-4 white-text">Iniciar sesión</h4>
+                        <f:view>
+                            <h:form>
 
+                                <p>Número de documento</p>
+                                <h:inputText value="#{usuarioControlador.usuario.numerodeDocumento}"></h:inputText>
+                                <p>Contraseña</p>
+                                <h:inputSecret value="#{usuarioControlador.usuario.contrasenna}"></h:inputSecret>
+
+                                <h:commandButton value="Ingresar" styleClass="waves-effect waves-light" action="#{usuarioControlador.UserLogin()}"></h:commandButton>
+                            </h:form>
+                        </f:view>
+                        <a href="Resources/Pages/olvido.xhtml" class="black-text">¿Olvido su contraseña?</a>
                     </div>
                 </div>
 
@@ -77,7 +89,7 @@
                         <img src="Resources/img/Colegio/Colegio frontal.jpg" alt=""/>
                     </div>
                 </div>
-                <a href="index.html" class="btn">Prueba</a>
+
                 <!-- Noticias -->
                 <div class="seccion">
                     <h2 class="tituloSeccionL center-align" id="Noticias">Noticias</h2>
