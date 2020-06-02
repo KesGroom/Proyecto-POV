@@ -1,12 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
         <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
         <!-- Se vincula los estilos css específicos de la página-->
-
+        <link href="../../Resources/css/zonaCoordinador.css" rel="stylesheet" type="text/css"/>
         <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
         de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que
         la página inicie para evitar fallos-->
@@ -17,7 +18,128 @@
         <title>Zonas servicio social</title>
     </h:head>
     <h:body>
-        HOLA JOJO
+        <div class="Bread">
+            <a href="">Principal</a>
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+            <a href="#">Servicio social</a>
+        </div>
+      
+        <div class="activador tooltipped" id="actAddUser" data-position="bottom" data-tooltip="Añadir Zona"><ion-icon id="iconUser" name="people-circle-outline"></ion-icon></div>
+
+            
+            <div class="registro" id="formAddUser">
+            <f:view>                                         
+                 <h:form>
+                     <h1 class="tituloFormulario">Registrar servicio social</h1>
+                    <h:panelGrid columns="2">                     
+                        <h:outputLabel value="Nombre Zona:" for="nombre" />
+                        <h:inputText id="nombre" value="#{zonaControlador.zona.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
+                        <h:outputLabel value="Lugar:" for="lugar" />
+                        <h:inputText id="lugar" value="#{zonaControlador.zona.lugar}" title="Lugar" required="true" requiredMessage="The Lugar field is required."/>
+                        <h:outputLabel value="Encargado:" for="encargado" />
+                        <h:inputText id="encargado" value="#{zonaControlador.zona.encargado}" title="Encargado" required="true" requiredMessage="The Encargado field is required."/>
+                        <h:outputLabel value="HoraEntrada:" for="horaEntrada" />
+                        <h:inputText id="horaEntrada" value="#{zonaControlador.zona.horaEntrada}" title="HoraEntrada" required="true" requiredMessage="The HoraEntrada field is required.">
+                            <f:convertDateTime pattern="H:mm" />
+                        </h:inputText>
+                        <h:outputLabel value="HoraSalida:" for="horaSalida" />
+                        <h:inputText id="horaSalida" value="#{zonaControlador.zona.horaSalida}" title="HoraSalida" required="true" requiredMessage="The HoraSalida field is required.">
+                            <f:convertDateTime pattern="H:mm" />
+                        </h:inputText>
+                        <h:outputLabel value="TiempodeServicio:" for="tiempodeServicio" />
+                        <h:inputText id="tiempodeServicio" value="#{zonaControlador.zona.tiempodeServicio}" title="TiempodeServicio" required="true" requiredMessage="The TiempodeServicio field is required."/>
+                        <h:outputLabel value="Cupos:" for="cupos" />
+                        <h:inputText id="cupos" value="#{zonaControlador.zona.cupos}" title="Cupos" required="true" requiredMessage="The Cupos field is required."/>
+                    </h:panelGrid>
+    
+                    <div class="botonesControl">
+                        <input type="reset" class=" red darken-4 waves-effect waves-light" value="Vaciar"></input>
+                        <h:commandButton value="Registrar" styleClass=" red darken-4 waves-effect waves-light" action="#{zonaControlador.registrar()}"></h:commandButton>
+                    </div>
+
+                </h:form>
+            </f:view>
+
+        </div>
+        <main>
+            <div class="contenedorTitulos">
+                <a href="ZonasSS.xhtml" class="titulo">Zonas</a>
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+                <a href="bitacora.xhtml" class="subTitulo">Bitácoras</a>
+            </div>
+        <div id="todos" class="col fondoTab">
+            <f:view>
+
+
+                <h:form>               
+                    <h:dataTable value="#{zonaControlador.consultarZona()}" var="item">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nombre"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Lugar"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lugar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Encargado"/>
+                            </f:facet>
+                            <h:outputText value="#{item.encargado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Hora entrada"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horaEntrada}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Hora salida"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horaSalida}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Tiempo de servicio"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tiempodeServicio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cupos"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cupos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Elimimnar"/>
+                            </f:facet>
+                            <h:commandLink class="eliminar" action="#{zonaControlador.eliminar()}"><ion-icon name="trash-outline"></ion-icon></h:commandLink>
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Modificar"/>
+                            </f:facet>                  
+                             <h:commandLink class="editar" action="#{zonaControlador.preActualizar(zonaActualizar)}"><ion-icon name="create-outline"></ion-icon></h:commandLink>
+                        </h:column>
+                        
+                    </h:dataTable>
+                    
+                </h:form>
+            </f:view>
+ </div>
+        </main>
+       
+
         
         <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
         <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>
@@ -25,6 +147,7 @@
         <script>
             M.AutoInit();
         </script>
+        <script src="../../Resources/js/zonaCoordinador.js" type="text/javascript"></script>
         <!-- Se hace uso de la iconografia de ionicons -->
         <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
