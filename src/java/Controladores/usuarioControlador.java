@@ -14,8 +14,10 @@ import Facade.TipoFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -25,6 +27,7 @@ import javax.ejb.EJB;
 @SessionScoped
 public class usuarioControlador implements Serializable {
 
+    
     /**
      * Creates a new instance of usuarioControlador
      */
@@ -73,6 +76,21 @@ public class usuarioControlador implements Serializable {
     public List<Usuario> consultarUsuarios() {
         return usuarioFacade.findAll();
     }
+    
+    public String UserLogin(){
+        Usuario user = new Usuario();
+        user = usuarioFacade.UserLog(usuario.getNumerodeDocumento(), usuario.getContrasenna());
+        if(user.getNumerodeDocumento() != null){
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("UserLoged", user);
+            usuario = new Usuario();
+          return "Resources/Pages/Dashboard?faces-redirect=true"; 
+        }else{
+            
+            usuario = new Usuario();
+          return "index";  
+        }
+        
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -97,5 +115,5 @@ public class usuarioControlador implements Serializable {
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
-    
+
 }

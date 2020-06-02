@@ -1,0 +1,63 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+.Bread{
+    width: 100%;
+    padding: 0.3rem 2rem;
+    border-bottom: 1px solid rgb(139, 136, 136);
+    background-color: honeydew;
+    position: fixed;
+    top: 0;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.Bread a{
+    color: rgb(126, 119, 119);
+    margin-right: 0.5rem;
+    font-size: 0.8em;
+}
+
+.Bread i{
+    color: rgb(126, 119, 119);
+    margin-right: 0.5rem;
+    font-size: 0.8em;
+}
+
+.Bread a:hover{
+    color: #b71c1c;
+}
+main{
+    margin-top: 40px;
+    padding: 0 50px;
+   
+}
+.titulo{
+    width: 100%;
+    height: 5rem;
+    margin-top: 4rem;
+    padding-top: 1rem;
+    font-size: 2em;
+    border-bottom: 1px solid black;
+    text-align: center;
+    background: #c2294b;
+    color: #ffffff;
+}
+.titulo_modal{
+    font-size: 2rem;
+    text-align: center;
+    background: #c2294b;
+    color: #ffffff;
+}
+.boton-registrar{
+    text-align: center;
+    color: #ffffff;
+}
+commandButton{
+    color: white;
+}

@@ -71,7 +71,11 @@ header{
 }
 
 .menu .enlaces{
-    display: inline-block;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
     text-align: right;
 }
 
@@ -84,10 +88,11 @@ header{
     color: white;
 }
 
-.menu .enlaces i{
+.menu .enlaces ion-icon{
     color: white;
     font-size: 1em;
     margin-right: 5px;
+    
 }
 
 /* efectos del menu */
@@ -293,13 +298,32 @@ main{
 }
 
 .modal{
-    width: 25rem;
+    width: 20rem;
+}
+
+.modalContentBox{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal h4{
     font-size: 1.5em;
-    padding: 0.5em;
-    border-radius: 10px;
+    padding: 0.5em 2em;
+    border-radius: 5px;
+}
+
+
+.modal .waves-effect input[type="submit"] {
+    padding:0.6rem 0.8rem;
+    color: white;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    background-color: #b71c1c;
+    margin: 1rem 6rem;
 }
 
 #Tipo{

@@ -6,9 +6,12 @@
 package Facade;
 
 import Entidades.Usuario;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +31,26 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     public UsuarioFacade() {
         super(Usuario.class);
     }
-    
+
+    public List<Usuario> busquedaRol(int rol) {
+
+        Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.idRoles=:rol");
+        q.setParameter("rol", rol);
+
+        return q.getResultList();
+    }
+
+    public Usuario UserLog(String documento, String contrasenna) {
+        Usuario usuario = new Usuario();
+        try {
+            Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.numerodeDocumento=:Doc AND u.contrasenna=:Pass");
+            q.setParameter("Doc", documento);
+            q.setParameter("Pass", contrasenna);
+            usuario = (Usuario) q.getSingleResult();
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+
+        return usuario;
+    }
 }
