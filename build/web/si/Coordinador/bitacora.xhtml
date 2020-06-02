@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
+        <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Se vincula los estilos css específicos de la página-->
+        <link href="../../Resources/css/zonaCoordinador.css" rel="stylesheet" type="text/css"/>
+        <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
+        de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que
+        la página inicie para evitar fallos-->
+        <script src="../../Resources/js/prefix.js" type="text/javascript"></script>
+        <!-- Se incluye el icono del sistema -->
+        <link rel="shorcut icon" href="../../Resources/img/Sistema/logoVersionFinal.png"/>
+        <!-- Nombre que se visualizará en el navegador -->
+        <title>Bitacora</title>
+    </h:head>
+    <h:body>
+        <div class="Bread">
+            <a href="">Principal</a>
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+            <a href="#">Bitacora</a>
+        </div>
+         <div class="activador tooltipped" id="actAddUser" data-position="bottom" data-tooltip="Añadir Zona"><ion-icon id="iconUser" name="people-circle-outline"></ion-icon></div>
+
+            
+            <div class="registro" id="formAddUser">
+                <f:view>
+
+
+                    <h:form>
+                        <h1 class="tituloFormulario">Registrar bitácora</h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="IdBitacoraServicio:" for="idBitacoraServicio" />
+                            <h:inputText id="idBitacoraServicio" value="#{bitacoraControlador.bitacora.idBitacoraServicio}" title="IdBitacoraServicio" required="true" requiredMessage="The IdBitacoraServicio field is required."/>
+                            <h:outputLabel value="FechaRegistro:" for="fechaRegistro" />
+                            <h:inputText id="fechaRegistro" value="#{bitacoraControlador.bitacora.fechaRegistro}" title="FechaRegistro" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:inputText>
+                            <h:outputLabel value="TiempoPrestado:" for="tiempoPrestado" />
+                            <h:inputText id="tiempoPrestado" value="#{bitacoraControlador.bitacora.tiempoPrestado}" title="TiempoPrestado" />
+                            <h:outputLabel value="Observaciones:" for="observaciones" />
+                            <h:inputTextarea rows="4" cols="30" id="observaciones" value="#{bitacoraControlador.bitacora.observaciones}" title="Observaciones" />
+                            <h:outputLabel value="LaboresRealizadas:" for="laboresRealizadas" />
+                            <h:inputTextarea rows="4" cols="30" id="laboresRealizadas" value="#{bitacoraControlador.bitacora.laboresRealizadas}" title="LaboresRealizadas" />
+                            <h:outputLabel value="Coordinador:" for="coordinador" />
+                            <h:selectOneMenu id="coordinador" value="#{bitacoraControlador.bitacora.coordinador}" title="Coordinador" required="true" requiredMessage="The Coordinador field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{coordinadorControlador.consultarTodos()}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="Estudiante:" for="estudiante" />
+                            <h:selectOneMenu id="estudiante" value="#{bitacoraControlador.bitacora.estudiante}" title="Estudiante" required="true" requiredMessage="The Estudiante field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{estudianteControlador.consultarTodos()}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="ZonadeServicio:" for="zonadeServicio" />
+                            <h:selectOneMenu id="zonadeServicio" value="#{bitacoraControlador.bitacora.zonadeServicio}" title="ZonadeServicio" required="true" requiredMessage="The ZonadeServicio field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{zonaControlador.consultarZona()}"/>
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+            </div>
+        <main>
+            <div class="contenedorTitulos">               
+                <a href="bitacora.xhtml" class="titulo">Bitácoras</a>
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+                <a href="ZonasSS.xhtml" class="subTitulo">Zonas</a>
+            </div>
+        <div id="todos" class="col fondoTab">
+            <f:view>
+                <h:form>
+                    <h:dataTable value="#{bitacoraControlador.consultarBitacora()}" var="item">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="FechaRegistro"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="TiempoPrestado"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tiempoPrestado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Observaciones"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observaciones}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="LaboresRealizadas"/>
+                            </f:facet>
+                            <h:outputText value="#{item.laboresRealizadas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Coordinador"/>
+                            </f:facet>
+                            <h:outputText value="#{item.coordinador}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Estudiante"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estudiante}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ZonadeServicio"/>
+                            </f:facet>
+                            <h:outputText value="#{item.zonadeServicio}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </f:view>
+
+        </div>
+        </main>
+        <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
+        <script src="../../Resources/js/zonaCoordinador.js" type="text/javascript"></script>
+        <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>
+        <!-- Se vincula al script AutoInit el cual contiene el inicializador automático de los elementos de materialize -->
+        <script>
+            M.AutoInit();
+        </script>
+        <!-- Se hace uso de la iconografia de ionicons -->
+        <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
+        <!-- Se vincula los scripts propios de la página-->
+        
+    </h:body>
+</html>
