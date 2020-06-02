@@ -15,9 +15,86 @@
         <link rel="shorcut icon" href="../../Resources/img/Sistema/logoVersionFinal.png"/>
         <!-- Nombre que se visualizará en el navegador -->
         <title>Cursos</title>
+        <meta charset="UTF-8" />
+    
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
+    <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Se hace uso de la iconografía de fontawesome -->
+    <link href="../../Resources/css/all.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Tambien se emplea la iconografía de material-icons al usar el framework de materialize -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
+    de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que la página inicie para evitar fallos-->
+    
+<script src="../../js/prefix.js"></script>
+    <!-- Se importa la fuente seleccionada para el proyecto (Roboto) para que se muestre correctamente en todos los dispositivos-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,500&amp;display=swap" rel="stylesheet" />
+     <!-- Se incluye el icono del sistema -->
+    
+<title>Cursos</title>
+<!-- Se vincula los estilos css específicos de la página-->
+    <link href="../../Resources/css/Cursos.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
+    
+    <!-- Se encierra todo el contenido del body en un div con clase contenedor al cual se le asignaran las propiedades de flexbox -->
+    <!-- Elemento Padre -->
+    
+<div class="contenedor">
+        
+<div class="Bread">
+            <a href="">Inicio</a>
+            
+<p><i class="fas fa-chevron-right" /> </p>
+            <a href="">Cursos</a>
+        </div>
+        <!-- ELemento hijo de contenedor y elemento padre de su contenido -->
+        <main>
+            
+<div class="titulo">
+                
+<h3>Cursos</h3>
+            </div>
+            
+<div class="contenedorCurs">
+                
+<ul class="collapsible">
+                    
+<li>
+                      
+<div class="collapsible-header"><i class="material-icons">face</i>1101</div>
+                      
+<div class="collapsible-body">
+                            
+<h5>Registros</h5>
+                            
+<ul>
+                                
+<li><a href="PlanillaAsistencia.xhtml" target="Planillas" class="black-text">Asistencia</a></li>
+                                
+<li><a href="Planilla_Notas" target="Planillas" class="black-text">Notas</a></li>
+                            </ul>
+                      </div>
+                    </li>                           
+                  </ul>
+                  
+<div class="planillas">
+                    <iframe src="PlanillaAsistencia.xhtml" name="Planillas" frameborder="0" />
+           </div>
+                  
+            </div>
+        </main>
+    </div>
+    <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
+    
+<script src="../../js/materialize.min.js"></script>
+    <!-- Se vincula al script AutoIniti el cual contiene el inicializador automático de los elementos de materialize -->
+    
+<script src="../../js/AutoInit.js"></script>
+    
+    
+
         
         <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
         <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>

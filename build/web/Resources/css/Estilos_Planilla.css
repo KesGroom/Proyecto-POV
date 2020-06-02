@@ -1,0 +1,36 @@
+.Bread{
+    width: 100%;
+    padding: 0.3rem 2rem;
+    border-bottom: 1px solid rgb(139, 136, 136);
+    background-color: honeydew;
+    position: fixed;
+    top: 0;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.Bread a{
+    color: rgb(126, 119, 119);
+    margin-right: 0.5rem;
+    font-size: 0.8em;
+}
+
+.Bread i{
+    color: rgb(126, 119, 119);
+    margin-right: 0.5rem;
+    font-size: 0.8em;
+}
+
+.Bread a:hover{
+    color: #b71c1c;
+}
+main{
+    margin-top: 40px;
+    padding: 0 50px;
+   
+}

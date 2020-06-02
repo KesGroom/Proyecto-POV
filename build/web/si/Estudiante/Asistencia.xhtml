@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <!-- Se vincula los estilos css específicos de la página-->
+    <link href="../../Resources/css/Estilos_Planilla.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+        <h:form>
+            <h1><h:outputText value="Lista de asistencia de personas"/></h1>
+            <h:dataTable value="#{registro_asistenciaControladores.consultarAsistencia()}" var="RegistroAsistencia">
+                
+                <h:column >
+                    <f:facet name="header">
+                        <h:outputText value="TemaTrabajado"/>
+                    </f:facet>
+                    <h:outputText value="#{RegistroAsistencia.temaTrabajado}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Fecha"/>
+                    </f:facet>
+                    <h:outputText value="#{RegistroAsistencia.fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Asistencia"/>
+                    </f:facet>
+                    <h:outputText value="#{RegistroAsistencia.asistencia}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Observaciones"/>
+                    </f:facet>
+                    <h:outputText value="#{RegistroAsistencia.observaciones}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Docente"/>
+                    </f:facet>
+                    <h:outputText value="#{RegistroAsistencia.docenteMateria.idDocente.idUsuario.nombre}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Materia"/>
+                    </f:facet>
+                    <h:outputText value="#{RegistroAsistencia.docenteMateria.idMateria.materia}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Estudiante"/>
+                    </f:facet>
+                    <h:outputText value="#{RegistroAsistencia.estudiante.idUsuario.nombre}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Periodo"/>
+                    </f:facet>
+                    <h:outputText value="#{RegistroAsistencia.periodo.numeroPeriodo}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </f:view>
+    </h:body>
+</html>
+
