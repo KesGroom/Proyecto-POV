@@ -46,21 +46,22 @@
                             <h:outputLabel value="LaboresRealizadas:" for="laboresRealizadas" />
                             <h:inputTextarea rows="4" cols="30" id="laboresRealizadas" value="#{bitacoraControlador.bitacora.laboresRealizadas}" title="LaboresRealizadas" />
                             <h:outputLabel value="Coordinador:" for="coordinador" />
-                            <h:selectOneMenu id="coordinador" value="#{bitacoraControlador.bitacora.coordinador}" title="Coordinador" required="true" requiredMessage="The Coordinador field is required.">
+                            <h:selectOneMenu id="coordinador" value="#{bitacoraControlador.coordinador.idCoordinador}" title="Coordinador" required="true" requiredMessage="The Coordinador field is required.">
                                 <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{coordinadorControlador.consultarTodos()}"/>
+                                <f:selectItems value="#{coordinadorControlador.consultarTodos()}" var="co" itemValue="#{co.idCoordinador}" itemLabel="#{co.idUsuario.nombre}"/>
                             </h:selectOneMenu>
                             <h:outputLabel value="Estudiante:" for="estudiante" />
-                            <h:selectOneMenu id="estudiante" value="#{bitacoraControlador.bitacora.estudiante}" title="Estudiante" required="true" requiredMessage="The Estudiante field is required.">
+                            <h:selectOneMenu id="estudiante" value="#{bitacoraControlador.estudiante.idEstudiante}" title="Estudiante" required="true" requiredMessage="The Estudiante field is required.">
                                 <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{estudianteControlador.consultarTodos()}"/>
+                                <f:selectItems value="#{estudianteControlador.consultarTodos()}" var="es" itemValue="#{es.idEstudiante}" itemLabel="#{es.idUsuario.nombre}"/>
                             </h:selectOneMenu>
                             <h:outputLabel value="ZonadeServicio:" for="zonadeServicio" />
-                            <h:selectOneMenu id="zonadeServicio" value="#{bitacoraControlador.bitacora.zonadeServicio}" title="ZonadeServicio" required="true" requiredMessage="The ZonadeServicio field is required.">
+                            <h:selectOneMenu id="zonadeServicio" value="#{bitacoraControlador.zona.idZonaSS}" title="ZonadeServicio" required="true" requiredMessage="The ZonadeServicio field is required.">
                                 <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{zonaControlador.consultarZona()}"/>
+                                <f:selectItems value="#{zonaControlador.consultarZona()}" var="zona" itemValue="#{zona.idZonaSS}" itemLabel="#{zona.lugar}"/>
                             </h:selectOneMenu>
                         </h:panelGrid>
+                        <h:commandButton value="Registrar" action="#{bitacoraControlador.registrar()}"></h:commandButton>
                     </h:form>
                 </f:view>
             </div>
@@ -117,6 +118,12 @@
                                 <h:outputText value="ZonadeServicio"/>
                             </f:facet>
                             <h:outputText value="#{item.zonadeServicio}"/>
+                        </h:column>
+                          <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Eliminar"/>
+                            </f:facet>
+                              <h:commandButton value="Eliminar" action="#{bitacoraControlador.eliminar()}"></h:commandButton>
                         </h:column>
                     </h:dataTable>
                 </h:form>

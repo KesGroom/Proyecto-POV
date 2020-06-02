@@ -8,6 +8,7 @@ package Controladores;
 import Entidades.BitacoraServicioSocial;
 import Entidades.Coordinador;
 import Entidades.Estudiante;
+import Entidades.ZonaServicioSocial;
 import Facade.BitacoraServicioSocialFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -29,13 +30,15 @@ public class bitacoraControlador implements Serializable {
     public bitacoraControlador() {
         coordinador = new Coordinador();
         estudiante = new Estudiante();
+        zona = new ZonaServicioSocial();
         bitacora = new BitacoraServicioSocial();
         bitacoraFacade = new BitacoraServicioSocialFacade();
     }
     
-    BitacoraServicioSocial bitacora;
-    Coordinador coordinador;
-    Estudiante estudiante;
+    private BitacoraServicioSocial bitacora;
+    private Coordinador coordinador;
+    private Estudiante estudiante;
+    private ZonaServicioSocial zona;
     
     @EJB
     BitacoraServicioSocialFacade bitacoraFacade;
@@ -45,6 +48,7 @@ public class bitacoraControlador implements Serializable {
     public String registrar(){
         bitacora.setCoordinador(coordinador);
         bitacora.setEstudiante(estudiante);
+        bitacora.setZonadeServicio(zona);
         bitacoraFacade.create(bitacora);
         bitacora = new BitacoraServicioSocial();// nose olvide d esscjnxs jv xjvn cxnsjv dsnvj ds
         return "bitacora";
@@ -53,6 +57,7 @@ public class bitacoraControlador implements Serializable {
     public String preActualizar(BitacoraServicioSocial bitacoraActualizar){
         coordinador = bitacoraActualizar.getCoordinador();
         estudiante = bitacoraActualizar.getEstudiante();
+        zona = bitacoraActualizar.getZonadeServicio();
         bitacora = bitacoraActualizar;
         return "bitacora";
     }
@@ -60,6 +65,7 @@ public class bitacoraControlador implements Serializable {
     public String actualizar(){
         bitacora.setCoordinador(coordinador);
         bitacora.setEstudiante(estudiante);
+        bitacora.setZonadeServicio(zona);
         bitacoraFacade.edit(bitacora);
         return "bitacora";
     }
@@ -95,6 +101,14 @@ public class bitacoraControlador implements Serializable {
 
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
+    }
+
+    public ZonaServicioSocial getZona() {
+        return zona;
+    }
+
+    public void setZona(ZonaServicioSocial zona) {
+        this.zona = zona;
     }
     
 }
