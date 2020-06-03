@@ -63,14 +63,14 @@ public class SesionControlador implements Serializable {
 
             return "Resources/Pages/Dashboard?faces-redirect=true";
         } else {
-            return "/index.xhtml?faces-redirect=true";
+            return "index.xhtml?faces-redirect=true";
         }
     }
 
     public String cerrarSesion() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         this.usuario = null;
-        this.documento = null;
+        this.documento = "";
         this.clave = "";
         return "/index.xhtml?faces-redirect=true";
     }
