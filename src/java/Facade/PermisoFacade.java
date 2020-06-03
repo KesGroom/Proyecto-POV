@@ -6,9 +6,12 @@
 package Facade;
 
 import Entidades.Permiso;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +30,19 @@ public class PermisoFacade extends AbstractFacade<Permiso> {
 
     public PermisoFacade() {
         super(Permiso.class);
+    }
+    
+    public List<Permiso> consultarHijos(int idPadre){
+        List<Permiso> listaPerPadre = new ArrayList<>();
+        try {
+            Query q = em.createQuery("SELECT p FROM Permiso p WHERE p.permisoPadre.idPermiso=:per");
+            q.setParameter("per", idPadre);
+            listaPerPadre = q.getResultList();
+        } catch (Exception e) {
+            System.err.println("Error: "+e.getMessage());
+        }
+        
+        return listaPerPadre;
     }
     
 }

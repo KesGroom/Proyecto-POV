@@ -62,14 +62,14 @@
                                     </div>
                                 </a>
                                 <ul>
-                                    <c:forEach items="#{p.permiso.permisoList}" var="sp">
+                                    <c:forEach items="#{sesionControlador.hijos(p.permiso.idPermiso)}" var="sp">
                                         <c:forEach items="#{sesionControlador.rolSeleccionado.rolHasPermisoList}" var="op">
-                                            <c:if test="#{sp.permiso.idPermiso eq op.permiso.idPermiso}">
+                                            <c:if test="#{sp.idPermiso eq op.permiso.idPermiso}">
                                                 <li>
-                                                    <a href="#{sp.permiso.url}" class="otro" target="WorksSpace">
+                                                    <a href="#{sp.url}" class="otro" target="WorksSpace">
                                                         <div class="OpcionMenu">
-                                                            #{sp.permiso.nombre}
-                                                            <ion-icon name="#{sp.permiso.icon}"></ion-icon>
+                                                            #{sp.nombre}
+                                                            <ion-icon name="#{sp.icon}"></ion-icon>
                                                         </div>
                                                     </a>
                                                 </li>
@@ -81,7 +81,7 @@
                         </li>
                     </c:forEach>
 
-                    <!--<h:outputText value="#{sesionControlador.obtenerMenu()}" escape="false"/> -->
+                    
 
 
                 </h:form></li>

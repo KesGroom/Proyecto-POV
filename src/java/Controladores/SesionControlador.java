@@ -7,14 +7,17 @@ package Controladores;
 
 
 import Entidades.Rol;
+import Entidades.Permiso;
 import Entidades.RolHasPermiso;
 import Entidades.Usuario;
+import Facade.PermisoFacade;
 import Facade.RolFacade;
 
 import Facade.UsuarioFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
 
@@ -33,6 +36,7 @@ public class SesionControlador implements Serializable {
         FacesContext fc = FacesContext.getCurrentInstance();
         rolFacade = new RolFacade();
         usuarioFacade = new UsuarioFacade();
+        
     }
 
     @EJB
@@ -40,6 +44,9 @@ public class SesionControlador implements Serializable {
 
     @EJB
     RolFacade rolFacade;
+    
+    @EJB
+    PermisoFacade permisoFacade; 
     
 
     private String documento;
@@ -56,7 +63,7 @@ public class SesionControlador implements Serializable {
 
             return "Resources/Pages/Dashboard?faces-redirect=true";
         } else {
-            return "index";
+            return "/index.xhtml?faces-redirect=true";
         }
     }
 
@@ -65,7 +72,7 @@ public class SesionControlador implements Serializable {
         this.usuario = null;
         this.documento = null;
         this.clave = "";
-        return "../../index.xhtml?faces-redirect=true";
+        return "/index.xhtml?faces-redirect=true";
     }
 
     public Boolean inicioSesion() {
@@ -84,15 +91,8 @@ public class SesionControlador implements Serializable {
         return false;
     }
 
-    public String obtenerMenu() {
-        String strHTML = "";
-        for (RolHasPermiso p : rolSeleccionado.getRolHasPermisoList()) {
-            strHTML += "<li>";
-            strHTML += "<a><ion-icon name='" + p.getPermiso().getIcon() + "'></ion-icon>" + p.getPermiso().getNombre() + "</a>";
-            strHTML += "</li>";
-
-        }
-        return strHTML;
+    public List<Permiso> hijos(int id){
+        return permisoFacade.consultarHijos(id);
     }
 
     public Rol getRolSeleccionado() {
