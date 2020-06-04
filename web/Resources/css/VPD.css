@@ -1,0 +1,157 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 4/06/2020, 01:23:35 PM
+    Author     : kesgr
+*/
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Courgette&family=Permanent+Marker&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+
+}
+
+.imgFondo{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+}
+
+.papel{
+    position: fixed;
+    width: 407.33px;
+    height: 523.78px;
+
+
+    background: #F1EFE4;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25), inset 1px 2px 2px rgba(0, 0, 0, 0.25);
+
+}
+
+#papelReloj{
+    padding: 2rem 2rem 7rem 2rem;
+    left: 40px;
+    top: 220px;
+    transform: rotate(25.14deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#papelReloj .fecha{
+    font-family: 'Courgette', cursive;
+    font-size: 14px;
+    text-align: center;
+    text-transform: capitalize;
+    width: 100%;
+    color: #9E9B9B;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#papelReloj .fecha p{
+    margin-left: 0.3rem;
+}
+
+#papelReloj .textos{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#papelReloj .textos .texto{
+    font-family: 'Courgette', cursive;
+    font-size: 26px;
+    color: #7f7f7f;
+}
+
+#papelReloj .reloj{
+    font-family: 'Permanent Marker', cursive;
+    width: 100%;
+    font-size: 70px;
+    color: #695C5C;
+
+    transform: rotate(30deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#papelReloj .reloj .caja-horas{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#papelReloj .reloj .caja-segundos{
+    font-size: 40px;
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+#papelReloj .reloj .caja-segundos .segundos{
+    display: none;
+}
+
+#papelFrase{
+    right: 30px;
+    top: 280px;
+    transform: rotate(-31.57deg);
+    font-family: 'Courgette', cursive;
+    
+    padding: 4.3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#papelFrase .frase{
+    font-size: 17px;
+    color: #7f7f7f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.taza{
+    position: fixed;
+    width: 478px;
+    height: 482px;
+    left: 687px;
+    top: -190px;
+}
+
+.boli{
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    left: 750px;
+    top: 300px;
+
+
+
+    transform: rotate(30deg);
+}

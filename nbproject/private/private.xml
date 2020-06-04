@@ -3,41 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/AgendaWebFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/AreaFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/GradoFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/UsuarioFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/PermisoFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/CursoFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/AtencioncursoFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/RegistroNotaFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/DocenteCitaFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/PqrsFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Controladores/SessionFilter.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Controladores/MateriaControlador.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/MateriaFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/PeriodoFacade.java</file>
             <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/web/index.xhtml</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/PlanesMejoramientoFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/DocenteMateriaFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/RegistroAsistenciaFacade.java</file>
+            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Entidades/Acudiente.java</file>
+            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Controladores/SessionFilter.java</file>
             <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Controladores/SesionControlador.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/ActividadFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/DocenteFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/EstudianteFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/AbstractFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/CitaFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/TipoFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/BitacoraServicioSocialFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Controladores/zonaControlador.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/ZonaServicioSocialFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/AcudienteFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/HorarioDeClaseFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/CoordinadorFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/RolFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/AtencionareaFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/CursoDocenteFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facades/RolHasPermisoFacade.java</file>
+            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facade/PermisoFacade.java</file>
+            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/web/Resources/css/Dasboard.css</file>
+            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/web/Resources/Pages/Dashboard.xhtml</file>
+            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Entidades/RolHasPermiso.java</file>
+            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facade/RolHasPermisoFacade.java</file>
         </group>
     </open-files>
 </project-private>

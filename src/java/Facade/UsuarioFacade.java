@@ -40,7 +40,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     }
 
     public Usuario UserLog(String documento, String contrasenna) {
-        Usuario usuario = new Usuario();
+        Usuario usuario = null;
         try {
             Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.numerodeDocumento=:Doc AND u.contrasenna=:Pass");
             q.setParameter("Doc", documento);

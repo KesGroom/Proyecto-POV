@@ -39,26 +39,23 @@
              ampm = 'AM';
             }
            
-           if(horas == 0){
+           if(horas === 0){
             horas = 12;
            };
    
            pHoras.textContent = horas;
            pAMPM.textContent = ampm;
    
-             if(minutos <10){ minutos = "0" + minutos};
-             if(segundos < 10){ segundos = "0" + segundos};
+             if(minutos <10){ minutos = "0" + minutos;};
+             if(segundos < 10){ segundos = "0" + segundos;};
            pMinutos.textContent = minutos;
            pSegundos.textContent = segundos;
    
     };
     actualizarHora();
     var intervalo = setInterval(actualizarHora, 1000);
-   }())
+   }());
 
-   document.addEventListener('DOMContentLoaded', function(){
-    M.AutoInit();
-})
 
 
 

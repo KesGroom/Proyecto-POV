@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+
+        <link href="../css/VPD.css" rel="stylesheet" type="text/css"/>
+        <!--<link href="../css/ViPrDa.css" rel="stylesheet" type="text/css"/>-->
+        <link rel="shorcut icon" href="../img/Sistema/logoVersionFinal.png" alt=""/>
+        <title>Principal</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <img src="../img/Fondos/escritorio mader.jpg" class="imgFondo" alt=""/>
+            <div class="papel" id="papelReloj">
+                <div class="fecha">
+                    <p id="diaSemana" class="diaSemana"></p>
+                    <p>,</p>
+                    <p id="dia" class="dia"></p>
+                    <p id="mes" class="mes"></p>
+                    <p id="year" class="year"></p>
+                </div>
+                <div class="textos">
+                    <p class="texto">¡Es bueno tenerte de vuelta!</p><br/>
+                    <p class="texto">#{sesionControlador.usuario.nombre}</p>
+                </div>
+
+                <div class="reloj">
+                    <div class="caja-horas">
+                        <p id="horas" class="horas"></p>
+                        <p class="separador">:</p>
+                        <p id="minutos" class="minutos"></p>
+                    </div>
+                    <div class="caja-segundos">
+                        <p id="ampm" class="ampm"></p>
+                        <ion-icon name="alarm-outline"></ion-icon>
+                        <p id="segundos" class="segundos"></p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="papel" id="papelFrase">
+                <div class="frase">
+                    #{sesionControlador.Mensaje()}    
+                </div>
+
+            </div>
+            <img src="../img/Sistema/Taza.png" class="taza" alt=""/>
+            <!--<img src="../img/Sistema/Boligrafo.png" class="boli" alt=""/>-->
+        </h:form>
+
+        <!-- Se hace uso de la iconografia de ionicons -->
+        <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
+        <script src="../js/Fecha_Hora.js" type="text/javascript"></script>
+    </h:body>
+</html>
