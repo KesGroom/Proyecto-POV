@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
         <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
@@ -15,9 +17,100 @@
         <link rel="shorcut icon" href="../../Resources/img/Sistema/logoVersionFinal.png"/>
         <!-- Nombre que se visualizará en el navegador -->
         <title>Citas</title>
+        <link href="../../Resources/css/Cita.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <div class="Bread">
+            <a href="">Principal</a>
+          <ion-icon name="chevron-forward-outline"></ion-icon> 
+            <a href="#">Usuario</a>
+        </div>
+        <main>
+            
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#Citas">Crear cita</a>
+
+  <!-- Modal Structure -->
+  <div id="Citas" class="modal">
+      <f:view>
+
+
+          <h:form>
+              <h1><h:outputText value="Create/Edit"/></h1>
+              <h:panelGrid columns="2">
+                  <h:outputLabel value="IdCita:" for="idCita" />
+                  <h:inputText id="idCita" value="#{citaControlador.cita.idCita}" title="IdCita" required="true" requiredMessage="The IdCita field is required."/>
+                  <h:outputLabel value="FechaRegistro:" for="fechaRegistro" />
+                  <h:inputText id="fechaRegistro" value="#{citaControlador.cita.fechaRegistro}" title="FechaRegistro" >
+                      <f:convertDateTime pattern="MM/dd/yyyy" />
+                  </h:inputText>
+                  <h:outputLabel value="FechaCita:" for="fechaCita" />
+                  <h:inputText id="fechaCita" value="#{citaControlador.cita.fechaCita}" title="FechaCita" >
+                      <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                  </h:inputText>
+                  <h:outputLabel value="Asunto:" for="asunto" />
+                  <h:inputTextarea rows="4" cols="30" id="asunto" value="#{citaControlador.cita.asunto}" title="Asunto" />
+                  <h:outputLabel value="Acudiente:" for="acudiente" />
+                  <h:selectOneMenu id="acudiente" value="#{citaControlador.acudiente.idAcudiente}" title="Acudiente" required="true" requiredMessage="The Acudiente field is required.">
+                      <!-- TODO: update below reference to list of available items-->
+                      <f:selectItems  var="acudiente" value="#{acudienteControladores.consultarAcudiente()}" itemValue="#{acudiente.idAcudiente}" itemLabel="#{acudiente.idUsuario.nombre}"/>
+                  </h:selectOneMenu>
+              </h:panelGrid>
+              <h:commandButton value="Registrar" action="#{citaControlador.registrarCita()}"></h:commandButton>
+          </h:form>
+      </f:view>
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+    </div>
+  </div>
+  <f:view>
+
+
+      <h:form>
+          <h1><h:outputText value="List"/></h1>
+          <p:dataTable value="#{citaControlador.consultarCita()}" var="item">
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="IdCita"/>
+                  </f:facet>
+                  <h:outputText value="#{item.idCita}"/>
+              </p:column>
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="FechaRegistro"/>
+                  </f:facet>
+                  <h:outputText value="#{item.fechaRegistro}">
+                      <f:convertDateTime pattern="MM/dd/yyyy" />
+                  </h:outputText>
+              </p:column>
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="FechaCita"/>
+                  </f:facet>
+                  <h:outputText value="#{item.fechaCita}">
+                      <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                  </h:outputText>
+              </p:column>
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="Asunto"/>
+                  </f:facet>
+                  <h:outputText value="#{item.asunto}"/>
+              </p:column>
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="Acudiente"/>
+                  </f:facet>
+                  <h:outputText value="#{item.acudiente}"/>
+              </p:column>
+          </p:dataTable>
+      </h:form>
+  </f:view>
+
+            
+        </main>
+     
         
         <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
         <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>

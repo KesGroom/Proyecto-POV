@@ -45,5 +45,8 @@ public class PeriodoControladores implements Serializable {
     public List<Periodo> consultarPeriodo(){
         return periodoFacade.findAll();
     }
+    public void registrarPeriodo(){
+        periodoFacade.create(periodo);
+    }
     
 }

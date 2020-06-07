@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
         <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
@@ -15,9 +17,119 @@
         <link rel="shorcut icon" href="../../Resources/img/Sistema/logoVersionFinal.png"/>
         <!-- Nombre que se visualizará en el navegador -->
         <title>Actividades</title>
+        <link href="../../Resources/css/actividades.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
+         <div class="Bread">
+            <a href="">Principal</a>
+          <ion-icon name="chevron-forward-outline"></ion-icon> 
+            <a href="#">Usuario</a>
+        </div>
+        <main>
+            
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger btn-large red darken-4" href="#CrearActividad">Crear Actividad</a>
+
+  <!-- Modal Structure -->
+  <div id="CrearActividad" class="modal">
+    <f:view>
+
+
+            <h:form>
+                
+                <h:panelGrid columns="2">
+                   
+                    <h:outputLabel value="Nombre:" for="nombre" />
+                    <h:inputText id="nombre" value="#{actividadControlador.actividad.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
+                    <h:outputLabel value="Identificador:" for="identificador" />
+                    <h:inputText id="identificador" value="#{actividadControlador.actividad.identificador}" title="Identificador" required="true" requiredMessage="The Identificador field is required."/>
+                    <h:outputLabel value="FechaAsignacion:" for="fechaAsignacion" />
+                    <h:inputText id="fechaAsignacion" value="#{actividadControlador.actividad.fechaAsignacion}" title="FechaAsignacion" required="true" requiredMessage="The FechaAsignacion field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="FechaEntrega:" for="fechaEntrega" />
+                    <h:inputText id="fechaEntrega" value="#{actividadControlador.actividad.fechaEntrega}" title="FechaEntrega" required="true" requiredMessage="The FechaEntrega field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Descripcion:" for="descripcion" />
+                    <h:inputTextarea rows="4" cols="30" id="descripcion" value="#{actividadControlador.actividad.descripcion}" title="Descripcion" />
+                    <h:outputLabel value="Curso:" for="curso" />
+                    <h:selectOneMenu id="curso" value="#{actividadControlador.curso.idCurso}" title="Curso" required="true" requiredMessage="The Curso field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems var="curso" value="#{cursoControlador.consultarCurso()}" itemValue="#{curso.idCurso}" itemLabel="#{curso.curso}" />
+                    </h:selectOneMenu>
+                    <h:outputLabel value="IdDocenteMateria:" for="idDocenteMateria" />
+                    <h:selectOneMenu id="idDocenteMateria" value="#{actividadControlador.docenteMateria.idDocMat}" title="IdDocenteMateria" required="true" requiredMessage="The IdDocenteMateria field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems var="docemate" value="#{docenteMateriaControladores.consultarDocenteMateria()}" itemValue="#{docemate.idDocMat}" itemLabel="#{docemate.idDocMat}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton value="Registrar" class="btn-large red darken-4" action="#{actividadControlador.registrarActividad()}"></h:commandButton>
+            </h:form>
+        </f:view>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+    </div>
+  </div>
+  <div class="titulo"> Actividades Creadas</div>
+  <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <p:dataTable value="#{actividadControlador.consultarActividad()}" var="item">
+                   
+                    <p:column filterBy="#{item.nombre}" >
+                        <f:facet name="header">
+                            <h:outputText value="Nombre"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nombre}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.identificador}">
+                        <f:facet name="header">
+                            <h:outputText value="Identificador"/>
+                        </f:facet>
+                        <h:outputText value="#{item.identificador}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.fechaAsignacion}" >
+                        <f:facet name="header">
+                            <h:outputText value="FechaAsignacion"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fechaAsignacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column filterBy="#{item.fechaEntrega}">
+                        <f:facet name="header">
+                            <h:outputText value="FechaEntrega"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fechaEntrega}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column filterBy="#{item.descripcion}">
+                        <f:facet name="header">
+                            <h:outputText value="Descripcion"/>
+                        </f:facet>
+                        <h:outputText value="#{item.descripcion}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.curso.curso}" >
+                        <f:facet name="header">
+                            <h:outputText value="Curso"/>
+                        </f:facet>
+                        <h:outputText value="#{item.curso.curso}"/>
+                    </p:column>
+                    <p:column >
+                        <f:facet name="header">
+                            <h:outputText value="IdDocenteMateria"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idDocenteMateria}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </f:view>
+            
+        </main>
         
         <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
         <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>

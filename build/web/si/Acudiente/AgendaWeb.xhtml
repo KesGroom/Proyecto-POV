@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
         <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
@@ -17,7 +18,44 @@
         <title>Agenda Web</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="IdAgendaWeb:" for="idAgendaWeb" />
+                    <h:inputText id="idAgendaWeb" value="#{agendaWebControlador.agendaWeb.idAgendaWeb}" title="IdAgendaWeb" required="true" requiredMessage="The IdAgendaWeb field is required."/>
+                    <h:outputLabel value="Categoria:" for="categoria" />
+                    <h:inputText id="categoria" value="#{agendaWebControlador.agendaWeb.categoria}" title="Categoria" required="true" requiredMessage="The Categoria field is required."/>
+                    <h:outputLabel value="Descripcion:" for="descripcion" />
+                    <h:inputTextarea rows="4" cols="30" id="descripcion" value="#{agendaWebControlador.agendaWeb.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
+                    <h:outputLabel value="Actividad:" for="actividad" />
+                    <h:selectOneMenu id="actividad" value="#{agendaWebControlador.agendaWeb.actividad}" title="Actividad" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="DocenteMateria:" for="docenteMateria" />
+                    <h:selectOneMenu id="docenteMateria" value="#{agendaWebControlador.docenteMateria.idDocMat}" title="DocenteMateria" required="true" requiredMessage="The DocenteMateria field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems var="docmat" value="#{docenteMateriaControladores.consultarDocenteMateria()}" itemValue="#{docmat.idDocMat}" itemLabel="#{docmat.idDocMat}" />
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Estudiante:" for="estudiante" />
+                    <h:selectOneMenu id="estudiante" value="#{agendaWebControlador.estudiante.idEstudiante}" title="Estudiante" required="true" requiredMessage="The Estudiante field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems var="estudiante" value="#{estudianteControladores.consultarEstudiante()}" itemValue="#{estudiante.idEstudiante}" itemLabel="#{estudiante.idUsuario.nombre}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="PlanMejoramiento:" for="planMejoramiento" />
+                    <h:selectOneMenu id="planMejoramiento" value="#{agendaWebControlador.agendaWeb.planMejoramiento}" title="PlanMejoramiento" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value=""/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton value="Registrar" action="#{agendaWebControlador.registrarAgendaWeb()}" ></h:commandButton>
+            </h:form>
+        </f:view>
+
+
         
         <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
         <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>

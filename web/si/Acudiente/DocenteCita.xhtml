@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
+        <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Se vincula los estilos css específicos de la página-->
+
+        <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
+        de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que
+        la página inicie para evitar fallos-->
+        <script src="../../Resources/js/prefix.js" type="text/javascript"></script>
+        <!-- Se incluye el icono del sistema -->
+        <link rel="shorcut icon" href="../../Resources/img/Sistema/logoVersionFinal.png"/>
+        <!-- Nombre que se visualizará en el navegador -->
+        <title>DocenteCita</title>
+        <link href="../../Resources/css/Cita.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <div class="Bread">
+            <a href="">Principal</a>
+          <ion-icon name="chevron-forward-outline"></ion-icon> 
+            <a href="#">Usuario</a>
+        </div>
+        <main>
+            
+        
+            
+          
+              <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+      <f:view>
+
+
+          <h:form>
+              <h1><h:outputText value="Create/Edit"/></h1>
+              <h:panelGrid columns="2">
+                  <h:outputLabel value="IdDocCitas:" for="idDocCitas" />
+                  <h:inputText id="idDocCitas" value="#{docenteCitas.docenteCita.idDocCitas}" title="IdDocCitas" required="true" requiredMessage="The IdDocCitas field is required."/>
+                  <h:outputLabel value="IdCita:" for="idCita" />
+                  <h:selectOneMenu id="idCita" value="#{docenteCitas.cita.idCita}" title="IdCita" required="true" requiredMessage="The IdCita field is required.">
+                      <!-- TODO: update below reference to list of available items-->
+                      <f:selectItems var="cita" value="#{citaControlador.consultarCita()}" itemLabel="#{cita.asunto}" itemValue="#{cita.idCita}" />
+                  </h:selectOneMenu>
+                  <h:outputLabel value="IdDocente:" for="idDocente" />
+                  <h:selectOneMenu id="idDocente" value="#{docenteCitas.docente.idDocente}" title="IdDocente" required="true" requiredMessage="The IdDocente field is required.">
+                      <!-- TODO: update below reference to list of available items-->
+                      <f:selectItems var="docente" value="#{docenteControlador.consultarDocente()}" itemValue="#{docente.idDocente}" itemLabel="#{docente.idUsuario.nombre}"/>
+                  </h:selectOneMenu>
+              </h:panelGrid>
+              <h:commandButton value="Registrar" class="btn-large red darken-4" action="#{docenteCitas.registrarDocenteCita()}" > </h:commandButton>
+          </h:form>
+      </f:view>
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+    </div>
+  </div>
+  <f:view>
+
+
+      <h:form>
+          <h1><h:outputText value="List"/></h1>
+          <p:dataTable value="#{docenteCitas.consultarDocenteCita()}" var="item">
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="IdDocCitas"/>
+                  </f:facet>
+                  <h:outputText value="#{item.idDocCitas}"/>
+              </p:column>
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="IdCita"/>
+                  </f:facet>
+                  <h:outputText value="#{item.idCita}"/>
+              </p:column>
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="IdDocente"/>
+                  </f:facet>
+                  <h:outputText value="#{item.idDocente}"/>
+              </p:column>
+          </p:dataTable>
+      </h:form>
+  </f:view>
+
+            
+        </main>
+    </h:body>
+     <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
+        <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>
+        <!-- Se vincula al script AutoIniti el cual contiene el inicializador automático de los elementos de materialize -->
+        <script>
+            M.AutoInit();
+        </script>
+        <!-- Se hace uso de la iconografia de ionicons -->
+        <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+        <!-- Se vincula los scripts propios de la página-->
+</html>
+
