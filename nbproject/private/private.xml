@@ -3,15 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/web/index.xhtml</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Entidades/Acudiente.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Controladores/SessionFilter.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Controladores/SesionControlador.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facade/PermisoFacade.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/web/Resources/css/Dasboard.css</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/web/Resources/Pages/Dashboard.xhtml</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Entidades/RolHasPermiso.java</file>
-            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/src/java/Facade/RolHasPermisoFacade.java</file>
+            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/web/si/Coordinador/Academica.xhtml</file>
+            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/web/si/Coordinador/Usuarios.xhtml</file>
+            <file>file:/C:/Users/kesgr/OneDrive/Documentos/NetBeansProjects/Proyecto-POV/web/si/Coordinador/ZonasSS.xhtml</file>
         </group>
     </open-files>
 </project-private>
