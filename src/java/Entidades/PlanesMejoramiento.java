@@ -31,18 +31,28 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "planes_mejoramiento")
 @XmlRootElement
 @NamedQueries({
+<<<<<<< HEAD:src/java/Entidades/PlanesMejoramiento.java
     @NamedQuery(name = "PlanesMejoramiento.findAll", query = "SELECT p FROM PlanesMejoramiento p")
     , @NamedQuery(name = "PlanesMejoramiento.findByIdPlanMejoramiento", query = "SELECT p FROM PlanesMejoramiento p WHERE p.idPlanMejoramiento = :idPlanMejoramiento")
     , @NamedQuery(name = "PlanesMejoramiento.findByFechaAsignacion", query = "SELECT p FROM PlanesMejoramiento p WHERE p.fechaAsignacion = :fechaAsignacion")
     , @NamedQuery(name = "PlanesMejoramiento.findByFechaEntrega", query = "SELECT p FROM PlanesMejoramiento p WHERE p.fechaEntrega = :fechaEntrega")
     , @NamedQuery(name = "PlanesMejoramiento.findByRecursos", query = "SELECT p FROM PlanesMejoramiento p WHERE p.recursos = :recursos")})
 public class PlanesMejoramiento implements Serializable {
+=======
+    @NamedQuery(name = "PlanMejoramiento.findAll", query = "SELECT p FROM PlanMejoramiento p WHERE p.estado = 1")
+    , @NamedQuery(name = "PlanMejoramiento.findByIdPlanMejoramiento", query = "SELECT p FROM PlanMejoramiento p WHERE p.idPlanMejoramiento = :idPlanMejoramiento")
+    , @NamedQuery(name = "PlanMejoramiento.findByFechaAsignacion", query = "SELECT p FROM PlanMejoramiento p WHERE p.fechaAsignacion = :fechaAsignacion")
+    , @NamedQuery(name = "PlanMejoramiento.findByFechaEntrega", query = "SELECT p FROM PlanMejoramiento p WHERE p.fechaEntrega = :fechaEntrega")
+    , @NamedQuery(name = "PlanMejoramiento.findByRecursos", query = "SELECT p FROM PlanMejoramiento p WHERE p.recursos = :recursos")
+    , @NamedQuery(name = "PlanMejoramiento.findByEstado", query = "SELECT p FROM PlanMejoramiento p WHERE p.estado = :estado")})
+public class PlanMejoramiento implements Serializable {
+>>>>>>> 29c006b257c9ac6ede6135119a6c1ff6fedcc0bf:src/java/Entidades/PlanMejoramiento.java
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -69,6 +79,8 @@ public class PlanesMejoramiento implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "Descripcion")
     private String descripcion;
+    @Column(name = "Estado")
+    private Integer estado;
     @OneToMany(mappedBy = "planMejoramiento", fetch = FetchType.LAZY)
     private List<RegistroNota> registroNotaList;
     @OneToMany(mappedBy = "planMejoramiento", fetch = FetchType.LAZY)
@@ -129,6 +141,14 @@ public class PlanesMejoramiento implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     @XmlTransient

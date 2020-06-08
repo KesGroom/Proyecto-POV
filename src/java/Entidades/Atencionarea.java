@@ -26,17 +26,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "atencionarea")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Atencionarea.findAll", query = "SELECT a FROM Atencionarea a")
+    @NamedQuery(name = "Atencionarea.findAll", query = "SELECT a FROM Atencionarea a WHERE a.estado = 1")
     , @NamedQuery(name = "Atencionarea.findByIdAtencionArea", query = "SELECT a FROM Atencionarea a WHERE a.idAtencionArea = :idAtencionArea")
     , @NamedQuery(name = "Atencionarea.findByDiaSemana", query = "SELECT a FROM Atencionarea a WHERE a.diaSemana = :diaSemana")
     , @NamedQuery(name = "Atencionarea.findByHoraInicioAtencion", query = "SELECT a FROM Atencionarea a WHERE a.horaInicioAtencion = :horaInicioAtencion")
-    , @NamedQuery(name = "Atencionarea.findByHoraFinalAtencion", query = "SELECT a FROM Atencionarea a WHERE a.horaFinalAtencion = :horaFinalAtencion")})
+    , @NamedQuery(name = "Atencionarea.findByHoraFinalAtencion", query = "SELECT a FROM Atencionarea a WHERE a.horaFinalAtencion = :horaFinalAtencion")
+    , @NamedQuery(name = "Atencionarea.findByEstado", query = "SELECT a FROM Atencionarea a WHERE a.estado = :estado")})
 public class Atencionarea implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,6 +60,8 @@ public class Atencionarea implements Serializable {
     @Column(name = "horaFinalAtencion")
     @Temporal(TemporalType.TIME)
     private Date horaFinalAtencion;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Area", referencedColumnName = "Id_Area")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Area area;
@@ -110,6 +113,14 @@ public class Atencionarea implements Serializable {
 
     public void setHoraFinalAtencion(Date horaFinalAtencion) {
         this.horaFinalAtencion = horaFinalAtencion;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Area getArea() {

@@ -6,13 +6,15 @@
 package Facade;
 
 import Entidades.AgendaWeb;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class AgendaWebFacade extends AbstractFacade<AgendaWeb> {
@@ -28,5 +30,9 @@ public class AgendaWebFacade extends AbstractFacade<AgendaWeb> {
     public AgendaWebFacade() {
         super(AgendaWeb.class);
     }
-    
+     public List<AgendaWeb> consultarAgendaWeb(int estado){
+        Query q = em.createQuery("SELECT a FROM AgendaWeb a WHERE a.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

@@ -27,17 +27,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "horario_de_clase")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "HorarioDeClase.findAll", query = "SELECT h FROM HorarioDeClase h")
+    @NamedQuery(name = "HorarioDeClase.findAll", query = "SELECT h FROM HorarioDeClase h WHERE h.estado = 1")
     , @NamedQuery(name = "HorarioDeClase.findByIdHorarioClase", query = "SELECT h FROM HorarioDeClase h WHERE h.idHorarioClase = :idHorarioClase")
     , @NamedQuery(name = "HorarioDeClase.findByDia", query = "SELECT h FROM HorarioDeClase h WHERE h.dia = :dia")
     , @NamedQuery(name = "HorarioDeClase.findByHoraInicio", query = "SELECT h FROM HorarioDeClase h WHERE h.horaInicio = :horaInicio")
-    , @NamedQuery(name = "HorarioDeClase.findByHoraFinal", query = "SELECT h FROM HorarioDeClase h WHERE h.horaFinal = :horaFinal")})
+    , @NamedQuery(name = "HorarioDeClase.findByHoraFinal", query = "SELECT h FROM HorarioDeClase h WHERE h.horaFinal = :horaFinal")
+    , @NamedQuery(name = "HorarioDeClase.findByEstado", query = "SELECT h FROM HorarioDeClase h WHERE h.estado = :estado")})
 public class HorarioDeClase implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,6 +62,8 @@ public class HorarioDeClase implements Serializable {
     @Column(name = "Hora_Final")
     @Temporal(TemporalType.TIME)
     private Date horaFinal;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "DocenteMateria", referencedColumnName = "Id_DocMat")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private DocenteMateria docenteMateria;
@@ -112,6 +115,14 @@ public class HorarioDeClase implements Serializable {
 
     public void setHoraFinal(Date horaFinal) {
         this.horaFinal = horaFinal;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public DocenteMateria getDocenteMateria() {

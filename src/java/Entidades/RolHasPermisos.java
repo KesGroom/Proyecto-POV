@@ -22,15 +22,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "roles_has_permisos")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "RolHasPermiso.findAll", query = "SELECT r FROM RolHasPermiso r")
-    , @NamedQuery(name = "RolHasPermiso.findByIdRolPermiso", query = "SELECT r FROM RolHasPermiso r WHERE r.idRolPermiso = :idRolPermiso")})
-public class RolHasPermiso implements Serializable {
+    @NamedQuery(name = "RolHasPermisos.findAll", query = "SELECT r FROM RolHasPermisos r")
+    , @NamedQuery(name = "RolHasPermisos.findByIdRolPermiso", query = "SELECT r FROM RolHasPermisos r WHERE r.idRolPermiso = :idRolPermiso")
+    , @NamedQuery(name = "RolHasPermisos.findByEstado", query = "SELECT r FROM RolHasPermisos r WHERE r.estado = :estado")})
+public class RolHasPermisos implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -38,6 +39,8 @@ public class RolHasPermiso implements Serializable {
     @Basic(optional = false)
     @Column(name = "idRolPermiso")
     private Integer idRolPermiso;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Permiso", referencedColumnName = "idPermiso")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Permiso permiso;
@@ -45,10 +48,10 @@ public class RolHasPermiso implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Rol rol;
 
-    public RolHasPermiso() {
+    public RolHasPermisos() {
     }
 
-    public RolHasPermiso(Integer idRolPermiso) {
+    public RolHasPermisos(Integer idRolPermiso) {
         this.idRolPermiso = idRolPermiso;
     }
 
@@ -58,6 +61,14 @@ public class RolHasPermiso implements Serializable {
 
     public void setIdRolPermiso(Integer idRolPermiso) {
         this.idRolPermiso = idRolPermiso;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Permiso getPermiso() {
@@ -86,10 +97,10 @@ public class RolHasPermiso implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RolHasPermiso)) {
+        if (!(object instanceof RolHasPermisos)) {
             return false;
         }
-        RolHasPermiso other = (RolHasPermiso) object;
+        RolHasPermisos other = (RolHasPermisos) object;
         if ((this.idRolPermiso == null && other.idRolPermiso != null) || (this.idRolPermiso != null && !this.idRolPermiso.equals(other.idRolPermiso))) {
             return false;
         }
@@ -98,7 +109,7 @@ public class RolHasPermiso implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.RolHasPermiso[ idRolPermiso=" + idRolPermiso + " ]";
+        return "Entidades.RolHasPermisos[ idRolPermiso=" + idRolPermiso + " ]";
     }
     
 }

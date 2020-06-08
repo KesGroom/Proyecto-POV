@@ -6,13 +6,15 @@
 package Facade;
 
 import Entidades.Acudiente;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class AcudienteFacade extends AbstractFacade<Acudiente> {
@@ -28,5 +30,9 @@ public class AcudienteFacade extends AbstractFacade<Acudiente> {
     public AcudienteFacade() {
         super(Acudiente.class);
     }
-    
+     public List<Acudiente> consultarAcudiente(int estado){
+        Query q = em.createQuery("SELECT a FROM Acudiente a WHERE a.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

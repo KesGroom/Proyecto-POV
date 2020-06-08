@@ -26,14 +26,15 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "coordinadores")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Coordinador.findAll", query = "SELECT c FROM Coordinador c")
-    , @NamedQuery(name = "Coordinador.findByIdCoordinador", query = "SELECT c FROM Coordinador c WHERE c.idCoordinador = :idCoordinador")})
+    @NamedQuery(name = "Coordinador.findAll", query = "SELECT c FROM Coordinador c WHERE c.estado = 1")
+    , @NamedQuery(name = "Coordinador.findByIdCoordinador", query = "SELECT c FROM Coordinador c WHERE c.idCoordinador = :idCoordinador")
+    , @NamedQuery(name = "Coordinador.findByEstado", query = "SELECT c FROM Coordinador c WHERE c.estado = :estado")})
 public class Coordinador implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,6 +43,8 @@ public class Coordinador implements Serializable {
     @Basic(optional = false)
     @Column(name = "Id_Coordinador")
     private Integer idCoordinador;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Id_Usuario", referencedColumnName = "Id_Usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idUsuario;
@@ -63,6 +66,14 @@ public class Coordinador implements Serializable {
 
     public void setIdCoordinador(Integer idCoordinador) {
         this.idCoordinador = idCoordinador;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Usuario getIdUsuario() {

@@ -6,13 +6,15 @@
 package Facade;
 
 import Entidades.Cita;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class CitaFacade extends AbstractFacade<Cita> {
@@ -28,5 +30,9 @@ public class CitaFacade extends AbstractFacade<Cita> {
     public CitaFacade() {
         super(Cita.class);
     }
-    
+     public List<Cita> consultarCita(int estado){
+        Query q = em.createQuery("SELECT c FROM Cita c WHERE c.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

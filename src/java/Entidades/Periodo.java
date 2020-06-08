@@ -28,17 +28,18 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "periodos")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Periodo.findAll", query = "SELECT p FROM Periodo p")
+    @NamedQuery(name = "Periodo.findAll", query = "SELECT p FROM Periodo p WHERE p.estado = 1")
     , @NamedQuery(name = "Periodo.findByIdPeriodo", query = "SELECT p FROM Periodo p WHERE p.idPeriodo = :idPeriodo")
     , @NamedQuery(name = "Periodo.findByNumeroPeriodo", query = "SELECT p FROM Periodo p WHERE p.numeroPeriodo = :numeroPeriodo")
     , @NamedQuery(name = "Periodo.findByFechaInicio", query = "SELECT p FROM Periodo p WHERE p.fechaInicio = :fechaInicio")
-    , @NamedQuery(name = "Periodo.findByFechaFinal", query = "SELECT p FROM Periodo p WHERE p.fechaFinal = :fechaFinal")})
+    , @NamedQuery(name = "Periodo.findByFechaFinal", query = "SELECT p FROM Periodo p WHERE p.fechaFinal = :fechaFinal")
+    , @NamedQuery(name = "Periodo.findByEstado", query = "SELECT p FROM Periodo p WHERE p.estado = :estado")})
 public class Periodo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,6 +62,8 @@ public class Periodo implements Serializable {
     @Column(name = "Fecha_Final")
     @Temporal(TemporalType.DATE)
     private Date fechaFinal;
+    @Column(name = "Estado")
+    private Integer estado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodo", fetch = FetchType.LAZY)
     private List<RegistroNota> registroNotaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodo", fetch = FetchType.LAZY)
@@ -110,6 +113,14 @@ public class Periodo implements Serializable {
 
     public void setFechaFinal(Date fechaFinal) {
         this.fechaFinal = fechaFinal;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     @XmlTransient

@@ -31,18 +31,19 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "actividades")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Actividad.findAll", query = "SELECT a FROM Actividad a")
+    @NamedQuery(name = "Actividad.findAll", query = "SELECT a FROM Actividad a WHERE a.estado = 1")
     , @NamedQuery(name = "Actividad.findByIdActividad", query = "SELECT a FROM Actividad a WHERE a.idActividad = :idActividad")
     , @NamedQuery(name = "Actividad.findByNombre", query = "SELECT a FROM Actividad a WHERE a.nombre = :nombre")
     , @NamedQuery(name = "Actividad.findByIdentificador", query = "SELECT a FROM Actividad a WHERE a.identificador = :identificador")
     , @NamedQuery(name = "Actividad.findByFechaAsignacion", query = "SELECT a FROM Actividad a WHERE a.fechaAsignacion = :fechaAsignacion")
-    , @NamedQuery(name = "Actividad.findByFechaEntrega", query = "SELECT a FROM Actividad a WHERE a.fechaEntrega = :fechaEntrega")})
+    , @NamedQuery(name = "Actividad.findByFechaEntrega", query = "SELECT a FROM Actividad a WHERE a.fechaEntrega = :fechaEntrega")
+    , @NamedQuery(name = "Actividad.findByEstado", query = "SELECT a FROM Actividad a WHERE a.estado = :estado")})
 public class Actividad implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -75,6 +76,8 @@ public class Actividad implements Serializable {
     @Size(max = 65535)
     @Column(name = "Descripcion")
     private String descripcion;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Curso", referencedColumnName = "Id_Curso")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Curso curso;
@@ -147,6 +150,14 @@ public class Actividad implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Curso getCurso() {

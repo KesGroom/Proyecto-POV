@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "permisos")
@@ -38,7 +38,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Permiso.findAll", query = "SELECT p FROM Permiso p")
     , @NamedQuery(name = "Permiso.findByIdPermiso", query = "SELECT p FROM Permiso p WHERE p.idPermiso = :idPermiso")
     , @NamedQuery(name = "Permiso.findByNombre", query = "SELECT p FROM Permiso p WHERE p.nombre = :nombre")
+<<<<<<< HEAD
     , @NamedQuery(name = "Permiso.findByIcon", query = "SELECT p FROM Permiso p WHERE p.icon = :icon")})
+=======
+    , @NamedQuery(name = "Permiso.findByIcon", query = "SELECT p FROM Permiso p WHERE p.icon = :icon")
+    , @NamedQuery(name = "Permiso.findByPermisoPadre", query = "SELECT p FROM Permiso p WHERE p.permisoPadre = :permisoPadre")
+    , @NamedQuery(name = "Permiso.findByEstado", query = "SELECT p FROM Permiso p WHERE p.estado = :estado")})
+>>>>>>> 29c006b257c9ac6ede6135119a6c1ff6fedcc0bf
 public class Permiso implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,6 +65,7 @@ public class Permiso implements Serializable {
     @Size(max = 45)
     @Column(name = "icon")
     private String icon;
+<<<<<<< HEAD
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "permiso", fetch = FetchType.LAZY)
     private List<RolHasPermiso> rolHasPermisoList;
     @OneToMany(mappedBy = "permisoPadre", fetch = FetchType.LAZY)
@@ -66,6 +73,16 @@ public class Permiso implements Serializable {
     @JoinColumn(name = "permiso_Padre", referencedColumnName = "idPermiso")
     @ManyToOne(fetch = FetchType.LAZY)
     private Permiso permisoPadre;
+=======
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "permiso_padre")
+    private int permisoPadre;
+    @Column(name = "Estado")
+    private Integer estado;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "permiso", fetch = FetchType.LAZY)
+    private List<RolHasPermisos> rolHasPermisosList;
+>>>>>>> 29c006b257c9ac6ede6135119a6c1ff6fedcc0bf
 
     public Permiso() {
     }
@@ -111,13 +128,32 @@ public class Permiso implements Serializable {
         this.icon = icon;
     }
 
-    @XmlTransient
-    public List<RolHasPermiso> getRolHasPermisoList() {
-        return rolHasPermisoList;
+<<<<<<< HEAD
+=======
+    public int getPermisoPadre() {
+        return permisoPadre;
     }
 
-    public void setRolHasPermisoList(List<RolHasPermiso> rolHasPermisoList) {
-        this.rolHasPermisoList = rolHasPermisoList;
+    public void setPermisoPadre(int permisoPadre) {
+        this.permisoPadre = permisoPadre;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
+    }
+
+>>>>>>> 29c006b257c9ac6ede6135119a6c1ff6fedcc0bf
+    @XmlTransient
+    public List<RolHasPermisos> getRolHasPermisosList() {
+        return rolHasPermisosList;
+    }
+
+    public void setRolHasPermisosList(List<RolHasPermisos> rolHasPermisosList) {
+        this.rolHasPermisosList = rolHasPermisosList;
     }
 
     @XmlTransient

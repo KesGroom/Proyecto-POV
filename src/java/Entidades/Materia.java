@@ -28,16 +28,17 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "materias")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Materia.findAll", query = "SELECT m FROM Materia m")
+    @NamedQuery(name = "Materia.findAll", query = "SELECT m FROM Materia m WHERE m.estado = 1")
     , @NamedQuery(name = "Materia.findByIdMateria", query = "SELECT m FROM Materia m WHERE m.idMateria = :idMateria")
     , @NamedQuery(name = "Materia.findByMateria", query = "SELECT m FROM Materia m WHERE m.materia = :materia")
-    , @NamedQuery(name = "Materia.findByTemas", query = "SELECT m FROM Materia m WHERE m.temas = :temas")})
+    , @NamedQuery(name = "Materia.findByTemas", query = "SELECT m FROM Materia m WHERE m.temas = :temas")
+    , @NamedQuery(name = "Materia.findByEstado", query = "SELECT m FROM Materia m WHERE m.estado = :estado")})
 public class Materia implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,6 +57,8 @@ public class Materia implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "Temas")
     private String temas;
+    @Column(name = "Estado")
+    private Integer estado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMateria", fetch = FetchType.LAZY)
     private List<DocenteMateria> docenteMateriaList;
     @JoinColumn(name = "Id_Area", referencedColumnName = "Id_Area")
@@ -97,6 +100,14 @@ public class Materia implements Serializable {
 
     public void setTemas(String temas) {
         this.temas = temas;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     @XmlTransient

@@ -73,12 +73,15 @@ public class usuarioControlador implements Serializable {
         usuarioFacade.edit(usuario);
     }
 
-    public void Eliminar() {
-        usuarioFacade.remove(usuario);
+    public String Remover(Usuario usuarioRemover) {
+        usuario = usuarioRemover;
+        usuario.setEstado(2);
+        usuarioFacade.edit(usuario);
+        return "/si/Coordinador/Usuarios.xhtml";
     }
 
     public List<Usuario> consultarUsuarios() {
-        return usuarioFacade.findAll();
+        return usuarioFacade.consultarUsuario(1);
     }
     
     public List<Usuario> buscarRol(int rol){

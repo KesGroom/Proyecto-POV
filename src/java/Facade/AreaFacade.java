@@ -6,13 +6,16 @@
 package Facade;
 
 import Entidades.Area;
+import Entidades.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class AreaFacade extends AbstractFacade<Area> {
@@ -28,5 +31,9 @@ public class AreaFacade extends AbstractFacade<Area> {
     public AreaFacade() {
         super(Area.class);
     }
-    
+     public List<Area> consultarArea(int estado){
+        Query q = em.createQuery("SELECT a FROM Area a WHERE a.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

@@ -31,16 +31,17 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "citas")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cita.findAll", query = "SELECT c FROM Cita c")
+    @NamedQuery(name = "Cita.findAll", query = "SELECT c FROM Cita c WHERE c.estado = 1")
     , @NamedQuery(name = "Cita.findByIdCita", query = "SELECT c FROM Cita c WHERE c.idCita = :idCita")
     , @NamedQuery(name = "Cita.findByFechaRegistro", query = "SELECT c FROM Cita c WHERE c.fechaRegistro = :fechaRegistro")
-    , @NamedQuery(name = "Cita.findByFechaCita", query = "SELECT c FROM Cita c WHERE c.fechaCita = :fechaCita")})
+    , @NamedQuery(name = "Cita.findByFechaCita", query = "SELECT c FROM Cita c WHERE c.fechaCita = :fechaCita")
+    , @NamedQuery(name = "Cita.findByEstado", query = "SELECT c FROM Cita c WHERE c.estado = :estado")})
 public class Cita implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,6 +60,8 @@ public class Cita implements Serializable {
     @Size(max = 65535)
     @Column(name = "Asunto")
     private String asunto;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Acudiente", referencedColumnName = "Id_Acudiente")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Acudiente acudiente;
@@ -102,6 +105,14 @@ public class Cita implements Serializable {
 
     public void setAsunto(String asunto) {
         this.asunto = asunto;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Acudiente getAcudiente() {

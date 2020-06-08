@@ -6,13 +6,15 @@
 package Facade;
 
 import Entidades.Periodo;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class PeriodoFacade extends AbstractFacade<Periodo> {
@@ -28,5 +30,9 @@ public class PeriodoFacade extends AbstractFacade<Periodo> {
     public PeriodoFacade() {
         super(Periodo.class);
     }
-    
+     public List<Periodo> consultarPeriodo(int estado){
+        Query q = em.createQuery("SELECT p FROM Periodo p WHERE p.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

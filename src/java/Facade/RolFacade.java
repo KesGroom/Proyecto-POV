@@ -6,13 +6,15 @@
 package Facade;
 
 import Entidades.Rol;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class RolFacade extends AbstractFacade<Rol> {
@@ -28,5 +30,9 @@ public class RolFacade extends AbstractFacade<Rol> {
     public RolFacade() {
         super(Rol.class);
     }
-    
+     public List<Rol> consultarRol(int estado){
+        Query q = em.createQuery("SELECT r FROM Rol r WHERE r.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

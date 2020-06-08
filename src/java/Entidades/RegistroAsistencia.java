@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "registro_asistencia")
@@ -37,7 +37,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "RegistroAsistencia.findAll", query = "SELECT r FROM RegistroAsistencia r")
     , @NamedQuery(name = "RegistroAsistencia.findByIdRegistroAsistencia", query = "SELECT r FROM RegistroAsistencia r WHERE r.idRegistroAsistencia = :idRegistroAsistencia")
     , @NamedQuery(name = "RegistroAsistencia.findByFecha", query = "SELECT r FROM RegistroAsistencia r WHERE r.fecha = :fecha")
-    , @NamedQuery(name = "RegistroAsistencia.findByAsistencia", query = "SELECT r FROM RegistroAsistencia r WHERE r.asistencia = :asistencia")})
+    , @NamedQuery(name = "RegistroAsistencia.findByAsistencia", query = "SELECT r FROM RegistroAsistencia r WHERE r.asistencia = :asistencia")
+    , @NamedQuery(name = "RegistroAsistencia.findByEstado", query = "SELECT r FROM RegistroAsistencia r WHERE r.estado = :estado")})
 public class RegistroAsistencia implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -65,6 +66,8 @@ public class RegistroAsistencia implements Serializable {
     @Size(max = 65535)
     @Column(name = "Observaciones")
     private String observaciones;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "DocenteMateria", referencedColumnName = "Id_DocMat")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private DocenteMateria docenteMateria;
@@ -127,6 +130,14 @@ public class RegistroAsistencia implements Serializable {
 
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public DocenteMateria getDocenteMateria() {
