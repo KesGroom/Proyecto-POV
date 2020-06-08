@@ -26,15 +26,16 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "roles")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r")
+    @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r WHERE r.estado = 1")
     , @NamedQuery(name = "Rol.findByIdRoles", query = "SELECT r FROM Rol r WHERE r.idRoles = :idRoles")
-    , @NamedQuery(name = "Rol.findByRol", query = "SELECT r FROM Rol r WHERE r.rol = :rol")})
+    , @NamedQuery(name = "Rol.findByRol", query = "SELECT r FROM Rol r WHERE r.rol = :rol")
+    , @NamedQuery(name = "Rol.findByEstado", query = "SELECT r FROM Rol r WHERE r.estado = :estado")})
 public class Rol implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,8 +49,10 @@ public class Rol implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "Rol")
     private String rol;
+    @Column(name = "Estado")
+    private Integer estado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rol", fetch = FetchType.LAZY)
-    private List<RolHasPermiso> rolHasPermisoList;
+    private List<RolHasPermisos> rolHasPermisosList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRoles", fetch = FetchType.LAZY)
     private List<Usuario> usuarioList;
 
@@ -81,13 +84,21 @@ public class Rol implements Serializable {
         this.rol = rol;
     }
 
-    @XmlTransient
-    public List<RolHasPermiso> getRolHasPermisoList() {
-        return rolHasPermisoList;
+    public Integer getEstado() {
+        return estado;
     }
 
-    public void setRolHasPermisoList(List<RolHasPermiso> rolHasPermisoList) {
-        this.rolHasPermisoList = rolHasPermisoList;
+    public void setEstado(Integer estado) {
+        this.estado = estado;
+    }
+
+    @XmlTransient
+    public List<RolHasPermisos> getRolHasPermisosList() {
+        return rolHasPermisosList;
+    }
+
+    public void setRolHasPermisosList(List<RolHasPermisos> rolHasPermisosList) {
+        this.rolHasPermisosList = rolHasPermisosList;
     }
 
     @XmlTransient

@@ -6,13 +6,15 @@
 package Facade;
 
 import Entidades.RegistroNota;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class RegistroNotaFacade extends AbstractFacade<RegistroNota> {
@@ -28,5 +30,9 @@ public class RegistroNotaFacade extends AbstractFacade<RegistroNota> {
     public RegistroNotaFacade() {
         super(RegistroNota.class);
     }
-    
+     public List<RegistroNota> consultarRegistroNota(int estado){
+        Query q = em.createQuery("SELECT r FROM RegistroNota r WHERE r.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

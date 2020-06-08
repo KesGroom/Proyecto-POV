@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "permisos")
@@ -37,7 +37,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Permiso.findByIdPermiso", query = "SELECT p FROM Permiso p WHERE p.idPermiso = :idPermiso")
     , @NamedQuery(name = "Permiso.findByNombre", query = "SELECT p FROM Permiso p WHERE p.nombre = :nombre")
     , @NamedQuery(name = "Permiso.findByIcon", query = "SELECT p FROM Permiso p WHERE p.icon = :icon")
-    , @NamedQuery(name = "Permiso.findByPermisoPadre", query = "SELECT p FROM Permiso p WHERE p.permisoPadre = :permisoPadre")})
+    , @NamedQuery(name = "Permiso.findByPermisoPadre", query = "SELECT p FROM Permiso p WHERE p.permisoPadre = :permisoPadre")
+    , @NamedQuery(name = "Permiso.findByEstado", query = "SELECT p FROM Permiso p WHERE p.estado = :estado")})
 public class Permiso implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -66,8 +67,10 @@ public class Permiso implements Serializable {
     @NotNull
     @Column(name = "permiso_padre")
     private int permisoPadre;
+    @Column(name = "Estado")
+    private Integer estado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "permiso", fetch = FetchType.LAZY)
-    private List<RolHasPermiso> rolHasPermisoList;
+    private List<RolHasPermisos> rolHasPermisosList;
 
     public Permiso() {
     }
@@ -124,13 +127,21 @@ public class Permiso implements Serializable {
         this.permisoPadre = permisoPadre;
     }
 
-    @XmlTransient
-    public List<RolHasPermiso> getRolHasPermisoList() {
-        return rolHasPermisoList;
+    public Integer getEstado() {
+        return estado;
     }
 
-    public void setRolHasPermisoList(List<RolHasPermiso> rolHasPermisoList) {
-        this.rolHasPermisoList = rolHasPermisoList;
+    public void setEstado(Integer estado) {
+        this.estado = estado;
+    }
+
+    @XmlTransient
+    public List<RolHasPermisos> getRolHasPermisosList() {
+        return rolHasPermisosList;
+    }
+
+    public void setRolHasPermisosList(List<RolHasPermisos> rolHasPermisosList) {
+        this.rolHasPermisosList = rolHasPermisosList;
     }
 
     @Override

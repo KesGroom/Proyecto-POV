@@ -70,13 +70,15 @@ public class bitacoraControlador implements Serializable {
         return "bitacora";
     }
     
-    public String eliminar(){
-        bitacoraFacade.remove(bitacora);
-        return "bitacora";
+     public String Remover(BitacoraServicioSocial bitacoraRemover) {
+        bitacora = bitacoraRemover;
+        bitacora.setEstado(2);
+        bitacoraFacade.edit(bitacora);
+        return "/si/Coordinador/bitacora.xhtml";
     }
     
     public List<BitacoraServicioSocial> consultarBitacora(){
-        return bitacoraFacade.findAll();
+        return bitacoraFacade.consultarBitacoraServicioSocial(1);
     }
 
     public BitacoraServicioSocial getBitacora() {

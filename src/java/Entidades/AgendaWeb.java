@@ -25,15 +25,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "agenda_web")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AgendaWeb.findAll", query = "SELECT a FROM AgendaWeb a")
+    @NamedQuery(name = "AgendaWeb.findAll", query = "SELECT a FROM AgendaWeb a WHERE a.estado = 1")
     , @NamedQuery(name = "AgendaWeb.findByIdAgendaWeb", query = "SELECT a FROM AgendaWeb a WHERE a.idAgendaWeb = :idAgendaWeb")
-    , @NamedQuery(name = "AgendaWeb.findByCategoria", query = "SELECT a FROM AgendaWeb a WHERE a.categoria = :categoria")})
+    , @NamedQuery(name = "AgendaWeb.findByCategoria", query = "SELECT a FROM AgendaWeb a WHERE a.categoria = :categoria")
+    , @NamedQuery(name = "AgendaWeb.findByEstado", query = "SELECT a FROM AgendaWeb a WHERE a.estado = :estado")})
 public class AgendaWeb implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,6 +54,8 @@ public class AgendaWeb implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "Descripcion")
     private String descripcion;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Actividad", referencedColumnName = "Id_Actividad")
     @ManyToOne(fetch = FetchType.LAZY)
     private Actividad actividad;
@@ -101,6 +104,14 @@ public class AgendaWeb implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Actividad getActividad() {

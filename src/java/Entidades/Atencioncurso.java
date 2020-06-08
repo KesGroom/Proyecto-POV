@@ -26,17 +26,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "atencioncurso")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Atencioncurso.findAll", query = "SELECT a FROM Atencioncurso a")
+    @NamedQuery(name = "Atencioncurso.findAll", query = "SELECT a FROM Atencioncurso a WHERE a.estado = 1")
     , @NamedQuery(name = "Atencioncurso.findByIdAtencionCurso", query = "SELECT a FROM Atencioncurso a WHERE a.idAtencionCurso = :idAtencionCurso")
     , @NamedQuery(name = "Atencioncurso.findByDiaSemana", query = "SELECT a FROM Atencioncurso a WHERE a.diaSemana = :diaSemana")
     , @NamedQuery(name = "Atencioncurso.findByHoraInicioAtencion", query = "SELECT a FROM Atencioncurso a WHERE a.horaInicioAtencion = :horaInicioAtencion")
-    , @NamedQuery(name = "Atencioncurso.findByHoraFinalAtencion", query = "SELECT a FROM Atencioncurso a WHERE a.horaFinalAtencion = :horaFinalAtencion")})
+    , @NamedQuery(name = "Atencioncurso.findByHoraFinalAtencion", query = "SELECT a FROM Atencioncurso a WHERE a.horaFinalAtencion = :horaFinalAtencion")
+    , @NamedQuery(name = "Atencioncurso.findByEstado", query = "SELECT a FROM Atencioncurso a WHERE a.estado = :estado")})
 public class Atencioncurso implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,6 +60,8 @@ public class Atencioncurso implements Serializable {
     @Column(name = "horaFinalAtencion")
     @Temporal(TemporalType.TIME)
     private Date horaFinalAtencion;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Curso", referencedColumnName = "Id_Curso")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Curso curso;
@@ -110,6 +113,14 @@ public class Atencioncurso implements Serializable {
 
     public void setHoraFinalAtencion(Date horaFinalAtencion) {
         this.horaFinalAtencion = horaFinalAtencion;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Curso getCurso() {

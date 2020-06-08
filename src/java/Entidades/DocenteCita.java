@@ -22,14 +22,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "docente_citas")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "DocenteCita.findAll", query = "SELECT d FROM DocenteCita d")
-    , @NamedQuery(name = "DocenteCita.findByIdDocCitas", query = "SELECT d FROM DocenteCita d WHERE d.idDocCitas = :idDocCitas")})
+    @NamedQuery(name = "DocenteCita.findAll", query = "SELECT d FROM DocenteCita d WHERE d.estado = 1")
+    , @NamedQuery(name = "DocenteCita.findByIdDocCitas", query = "SELECT d FROM DocenteCita d WHERE d.idDocCitas = :idDocCitas")
+    , @NamedQuery(name = "DocenteCita.findByEstado", query = "SELECT d FROM DocenteCita d WHERE d.estado = :estado")})
 public class DocenteCita implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,6 +39,8 @@ public class DocenteCita implements Serializable {
     @Basic(optional = false)
     @Column(name = "Id_DocCitas")
     private Integer idDocCitas;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Id_Cita", referencedColumnName = "Id_Cita")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Cita idCita;
@@ -58,6 +61,14 @@ public class DocenteCita implements Serializable {
 
     public void setIdDocCitas(Integer idDocCitas) {
         this.idDocCitas = idDocCitas;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Cita getIdCita() {

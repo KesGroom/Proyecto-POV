@@ -27,16 +27,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "bitacora_servicio_social")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "BitacoraServicioSocial.findAll", query = "SELECT b FROM BitacoraServicioSocial b")
+    @NamedQuery(name = "BitacoraServicioSocial.findAll", query = "SELECT b FROM BitacoraServicioSocial b WHERE b.estado = 1")
     , @NamedQuery(name = "BitacoraServicioSocial.findByIdBitacoraServicio", query = "SELECT b FROM BitacoraServicioSocial b WHERE b.idBitacoraServicio = :idBitacoraServicio")
     , @NamedQuery(name = "BitacoraServicioSocial.findByFechaRegistro", query = "SELECT b FROM BitacoraServicioSocial b WHERE b.fechaRegistro = :fechaRegistro")
-    , @NamedQuery(name = "BitacoraServicioSocial.findByTiempoPrestado", query = "SELECT b FROM BitacoraServicioSocial b WHERE b.tiempoPrestado = :tiempoPrestado")})
+    , @NamedQuery(name = "BitacoraServicioSocial.findByTiempoPrestado", query = "SELECT b FROM BitacoraServicioSocial b WHERE b.tiempoPrestado = :tiempoPrestado")
+    , @NamedQuery(name = "BitacoraServicioSocial.findByEstado", query = "SELECT b FROM BitacoraServicioSocial b WHERE b.estado = :estado")})
 public class BitacoraServicioSocial implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,6 +59,8 @@ public class BitacoraServicioSocial implements Serializable {
     @Size(max = 65535)
     @Column(name = "Labores_Realizadas")
     private String laboresRealizadas;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Coordinador", referencedColumnName = "Id_Coordinador")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Coordinador coordinador;
@@ -113,6 +116,14 @@ public class BitacoraServicioSocial implements Serializable {
 
     public void setLaboresRealizadas(String laboresRealizadas) {
         this.laboresRealizadas = laboresRealizadas;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Coordinador getCoordinador() {

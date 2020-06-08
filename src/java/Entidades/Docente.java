@@ -26,14 +26,15 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "docentes")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Docente.findAll", query = "SELECT d FROM Docente d")
-    , @NamedQuery(name = "Docente.findByIdDocente", query = "SELECT d FROM Docente d WHERE d.idDocente = :idDocente")})
+    @NamedQuery(name = "Docente.findAll", query = "SELECT d FROM Docente d WHERE d.estado = 1")
+    , @NamedQuery(name = "Docente.findByIdDocente", query = "SELECT d FROM Docente d WHERE d.idDocente = :idDocente")
+    , @NamedQuery(name = "Docente.findByEstado", query = "SELECT d FROM Docente d WHERE d.estado = :estado")})
 public class Docente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,6 +43,8 @@ public class Docente implements Serializable {
     @Basic(optional = false)
     @Column(name = "Id_Docente")
     private Integer idDocente;
+    @Column(name = "Estado")
+    private Integer estado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDocente", fetch = FetchType.LAZY)
     private List<CursoDocente> cursoDocenteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "docenteACargo", fetch = FetchType.LAZY)
@@ -69,6 +72,14 @@ public class Docente implements Serializable {
 
     public void setIdDocente(Integer idDocente) {
         this.idDocente = idDocente;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     @XmlTransient

@@ -28,16 +28,17 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "cursos")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Curso.findAll", query = "SELECT c FROM Curso c")
+    @NamedQuery(name = "Curso.findAll", query = "SELECT c FROM Curso c WHERE c.estado = 1")
     , @NamedQuery(name = "Curso.findByIdCurso", query = "SELECT c FROM Curso c WHERE c.idCurso = :idCurso")
     , @NamedQuery(name = "Curso.findByCurso", query = "SELECT c FROM Curso c WHERE c.curso = :curso")
-    , @NamedQuery(name = "Curso.findBySalon", query = "SELECT c FROM Curso c WHERE c.salon = :salon")})
+    , @NamedQuery(name = "Curso.findBySalon", query = "SELECT c FROM Curso c WHERE c.salon = :salon")
+    , @NamedQuery(name = "Curso.findByEstado", query = "SELECT c FROM Curso c WHERE c.estado = :estado")})
 public class Curso implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,6 +57,8 @@ public class Curso implements Serializable {
     @Size(min = 1, max = 3)
     @Column(name = "Salon")
     private String salon;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Grado", referencedColumnName = "Id_Grado")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Grado grado;
@@ -103,6 +106,14 @@ public class Curso implements Serializable {
 
     public void setSalon(String salon) {
         this.salon = salon;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Grado getGrado() {

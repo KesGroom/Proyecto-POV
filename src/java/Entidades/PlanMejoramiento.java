@@ -31,17 +31,18 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "planes_mejoramiento")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PlanMejoramiento.findAll", query = "SELECT p FROM PlanMejoramiento p")
+    @NamedQuery(name = "PlanMejoramiento.findAll", query = "SELECT p FROM PlanMejoramiento p WHERE p.estado = 1")
     , @NamedQuery(name = "PlanMejoramiento.findByIdPlanMejoramiento", query = "SELECT p FROM PlanMejoramiento p WHERE p.idPlanMejoramiento = :idPlanMejoramiento")
     , @NamedQuery(name = "PlanMejoramiento.findByFechaAsignacion", query = "SELECT p FROM PlanMejoramiento p WHERE p.fechaAsignacion = :fechaAsignacion")
     , @NamedQuery(name = "PlanMejoramiento.findByFechaEntrega", query = "SELECT p FROM PlanMejoramiento p WHERE p.fechaEntrega = :fechaEntrega")
-    , @NamedQuery(name = "PlanMejoramiento.findByRecursos", query = "SELECT p FROM PlanMejoramiento p WHERE p.recursos = :recursos")})
+    , @NamedQuery(name = "PlanMejoramiento.findByRecursos", query = "SELECT p FROM PlanMejoramiento p WHERE p.recursos = :recursos")
+    , @NamedQuery(name = "PlanMejoramiento.findByEstado", query = "SELECT p FROM PlanMejoramiento p WHERE p.estado = :estado")})
 public class PlanMejoramiento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -69,6 +70,8 @@ public class PlanMejoramiento implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "Descripcion")
     private String descripcion;
+    @Column(name = "Estado")
+    private Integer estado;
     @OneToMany(mappedBy = "planMejoramiento", fetch = FetchType.LAZY)
     private List<RegistroNota> registroNotaList;
     @OneToMany(mappedBy = "planMejoramiento", fetch = FetchType.LAZY)
@@ -129,6 +132,14 @@ public class PlanMejoramiento implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     @XmlTransient

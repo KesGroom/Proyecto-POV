@@ -6,13 +6,15 @@
 package Facade;
 
 import Entidades.ZonaServicioSocial;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class ZonaServicioSocialFacade extends AbstractFacade<ZonaServicioSocial> {
@@ -28,5 +30,9 @@ public class ZonaServicioSocialFacade extends AbstractFacade<ZonaServicioSocial>
     public ZonaServicioSocialFacade() {
         super(ZonaServicioSocial.class);
     }
-    
+     public List<ZonaServicioSocial> consultarZonaServicioSocial(int estado){
+        Query q = em.createQuery("SELECT z FROM ZonaServicioSocial z WHERE z.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

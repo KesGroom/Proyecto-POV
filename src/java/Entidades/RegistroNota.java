@@ -23,15 +23,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "registro_notas")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "RegistroNota.findAll", query = "SELECT r FROM RegistroNota r")
+    @NamedQuery(name = "RegistroNota.findAll", query = "SELECT r FROM RegistroNota r WHERE r.estado = 1")
     , @NamedQuery(name = "RegistroNota.findByIdRegistroNotas", query = "SELECT r FROM RegistroNota r WHERE r.idRegistroNotas = :idRegistroNotas")
-    , @NamedQuery(name = "RegistroNota.findByCalificacion", query = "SELECT r FROM RegistroNota r WHERE r.calificacion = :calificacion")})
+    , @NamedQuery(name = "RegistroNota.findByCalificacion", query = "SELECT r FROM RegistroNota r WHERE r.calificacion = :calificacion")
+    , @NamedQuery(name = "RegistroNota.findByEstado", query = "SELECT r FROM RegistroNota r WHERE r.estado = :estado")})
 public class RegistroNota implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,6 +45,8 @@ public class RegistroNota implements Serializable {
     @NotNull
     @Column(name = "Calificacion")
     private double calificacion;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Actividad", referencedColumnName = "Id_Actividad")
     @ManyToOne(fetch = FetchType.LAZY)
     private Actividad actividad;
@@ -86,6 +89,14 @@ public class RegistroNota implements Serializable {
 
     public void setCalificacion(double calificacion) {
         this.calificacion = calificacion;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Actividad getActividad() {

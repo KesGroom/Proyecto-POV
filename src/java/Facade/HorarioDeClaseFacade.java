@@ -6,13 +6,16 @@
 package Facade;
 
 import Entidades.HorarioDeClase;
+import Entidades.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class HorarioDeClaseFacade extends AbstractFacade<HorarioDeClase> {
@@ -28,5 +31,9 @@ public class HorarioDeClaseFacade extends AbstractFacade<HorarioDeClase> {
     public HorarioDeClaseFacade() {
         super(HorarioDeClase.class);
     }
-    
+     public List<HorarioDeClase> consultarHorarioClase(int estado){
+        Query q = em.createQuery("SELECT h FROM HorarioDeClase h WHERE h.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

@@ -45,12 +45,14 @@ public class zonaControlador implements Serializable {
     public void actualizar(){
         zonaFacade.edit(zona);
     }
-    public String eliminar(){
-        zonaFacade.remove(zona);
-        return "ZonasSS.xhtml";
+    public String Remover(ZonaServicioSocial zonaRemover) {
+        zona = zonaRemover;
+        zona.setEstado(2);
+        zonaFacade.edit(zona);
+        return "/si/Coordinador/ZonasSS.xhtml";
     }
     public List<ZonaServicioSocial> consultarZona(){
-        return zonaFacade.findAll();
+        return zonaFacade.consultarZonaServicioSocial(1);
     }
 
     public ZonaServicioSocial getZona() {

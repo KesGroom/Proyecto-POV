@@ -6,13 +6,15 @@
 package Facade;
 
 import Entidades.Coordinador;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class CoordinadorFacade extends AbstractFacade<Coordinador> {
@@ -28,5 +30,9 @@ public class CoordinadorFacade extends AbstractFacade<Coordinador> {
     public CoordinadorFacade() {
         super(Coordinador.class);
     }
-    
+     public List<Coordinador> consultarCoordinador(int estado){
+        Query q = em.createQuery("SELECT c FROM Coordinador c WHERE c.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

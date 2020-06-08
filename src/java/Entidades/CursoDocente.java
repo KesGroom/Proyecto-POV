@@ -26,14 +26,15 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "curso_docente")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CursoDocente.findAll", query = "SELECT c FROM CursoDocente c")
-    , @NamedQuery(name = "CursoDocente.findByIdDocCur", query = "SELECT c FROM CursoDocente c WHERE c.idDocCur = :idDocCur")})
+    @NamedQuery(name = "CursoDocente.findAll", query = "SELECT c FROM CursoDocente c WHERE c.estado = 1")
+    , @NamedQuery(name = "CursoDocente.findByIdDocCur", query = "SELECT c FROM CursoDocente c WHERE c.idDocCur = :idDocCur")
+    , @NamedQuery(name = "CursoDocente.findByEstado", query = "SELECT c FROM CursoDocente c WHERE c.estado = :estado")})
 public class CursoDocente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,6 +43,8 @@ public class CursoDocente implements Serializable {
     @Basic(optional = false)
     @Column(name = "Id_DocCur")
     private Integer idDocCur;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Id_Curso", referencedColumnName = "Id_Curso")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Curso idCurso;
@@ -64,6 +67,14 @@ public class CursoDocente implements Serializable {
 
     public void setIdDocCur(Integer idDocCur) {
         this.idDocCur = idDocCur;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Curso getIdCurso() {

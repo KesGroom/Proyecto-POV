@@ -6,13 +6,16 @@
 package Facade;
 
 import Entidades.CursoDocente;
+import Entidades.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class CursoDocenteFacade extends AbstractFacade<CursoDocente> {
@@ -28,5 +31,9 @@ public class CursoDocenteFacade extends AbstractFacade<CursoDocente> {
     public CursoDocenteFacade() {
         super(CursoDocente.class);
     }
-    
+     public List<CursoDocente> consultarCursoDocente(int estado){
+        Query q = em.createQuery("SELECT c FROM CursoDocente c WHERE c.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

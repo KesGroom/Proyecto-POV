@@ -29,15 +29,16 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "areas")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Area.findAll", query = "SELECT a FROM Area a")
+    @NamedQuery(name = "Area.findAll", query = "SELECT a FROM Area a WHERE a.estado = 1")
     , @NamedQuery(name = "Area.findByIdArea", query = "SELECT a FROM Area a WHERE a.idArea = :idArea")
-    , @NamedQuery(name = "Area.findByArea", query = "SELECT a FROM Area a WHERE a.area = :area")})
+    , @NamedQuery(name = "Area.findByArea", query = "SELECT a FROM Area a WHERE a.area = :area")
+    , @NamedQuery(name = "Area.findByEstado", query = "SELECT a FROM Area a WHERE a.estado = :estado")})
 public class Area implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -57,6 +58,8 @@ public class Area implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "Competencias")
     private String competencias;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Grado", referencedColumnName = "Id_Grado")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Grado grado;
@@ -100,6 +103,14 @@ public class Area implements Serializable {
 
     public void setCompetencias(String competencias) {
         this.competencias = competencias;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Grado getGrado() {

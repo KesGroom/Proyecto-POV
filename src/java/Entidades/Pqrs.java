@@ -28,16 +28,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "pqrs")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pqrs.findAll", query = "SELECT p FROM Pqrs p ORDER BY p.idPQRS Asc")
+    @NamedQuery(name = "Pqrs.findAll", query = "SELECT p FROM Pqrs p WHERE p.estado = 1")
     , @NamedQuery(name = "Pqrs.findByIdPQRS", query = "SELECT p FROM Pqrs p WHERE p.idPQRS = :idPQRS")
     , @NamedQuery(name = "Pqrs.findByTipo", query = "SELECT p FROM Pqrs p WHERE p.tipo = :tipo")
-    , @NamedQuery(name = "Pqrs.findByFecha", query = "SELECT p FROM Pqrs p WHERE p.fecha = :fecha")})
+    , @NamedQuery(name = "Pqrs.findByFecha", query = "SELECT p FROM Pqrs p WHERE p.fecha = :fecha")
+    , @NamedQuery(name = "Pqrs.findByEstado", query = "SELECT p FROM Pqrs p WHERE p.estado = :estado")})
 public class Pqrs implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,6 +63,8 @@ public class Pqrs implements Serializable {
     @Size(max = 65535)
     @Column(name = "Respuesta")
     private String respuesta;
+    @Column(name = "Estado")
+    private Integer estado;
     @JoinColumn(name = "Id_Acudiente", referencedColumnName = "Id_Acudiente")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Acudiente idAcudiente;
@@ -119,6 +122,14 @@ public class Pqrs implements Serializable {
 
     public void setRespuesta(String respuesta) {
         this.respuesta = respuesta;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     public Acudiente getIdAcudiente() {

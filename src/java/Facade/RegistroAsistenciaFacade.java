@@ -6,13 +6,15 @@
 package Facade;
 
 import Entidades.RegistroAsistencia;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class RegistroAsistenciaFacade extends AbstractFacade<RegistroAsistencia> {
@@ -28,5 +30,9 @@ public class RegistroAsistenciaFacade extends AbstractFacade<RegistroAsistencia>
     public RegistroAsistenciaFacade() {
         super(RegistroAsistencia.class);
     }
-    
+     public List<RegistroAsistencia> consultarRegistroAsistencia(int estado){
+        Query q = em.createQuery("SELECT r FROM RegistroAsistencia r WHERE r.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

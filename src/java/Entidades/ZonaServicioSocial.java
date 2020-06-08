@@ -29,13 +29,13 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "zonas_servicio_social")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ZonaServicioSocial.findAll", query = "SELECT z FROM ZonaServicioSocial z")
+    @NamedQuery(name = "ZonaServicioSocial.findAll", query = "SELECT z FROM ZonaServicioSocial z WHERE z.estado = 1")
     , @NamedQuery(name = "ZonaServicioSocial.findByIdZonaSS", query = "SELECT z FROM ZonaServicioSocial z WHERE z.idZonaSS = :idZonaSS")
     , @NamedQuery(name = "ZonaServicioSocial.findByNombre", query = "SELECT z FROM ZonaServicioSocial z WHERE z.nombre = :nombre")
     , @NamedQuery(name = "ZonaServicioSocial.findByLugar", query = "SELECT z FROM ZonaServicioSocial z WHERE z.lugar = :lugar")
@@ -43,7 +43,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "ZonaServicioSocial.findByHoraEntrada", query = "SELECT z FROM ZonaServicioSocial z WHERE z.horaEntrada = :horaEntrada")
     , @NamedQuery(name = "ZonaServicioSocial.findByHoraSalida", query = "SELECT z FROM ZonaServicioSocial z WHERE z.horaSalida = :horaSalida")
     , @NamedQuery(name = "ZonaServicioSocial.findByTiempodeServicio", query = "SELECT z FROM ZonaServicioSocial z WHERE z.tiempodeServicio = :tiempodeServicio")
-    , @NamedQuery(name = "ZonaServicioSocial.findByCupos", query = "SELECT z FROM ZonaServicioSocial z WHERE z.cupos = :cupos")})
+    , @NamedQuery(name = "ZonaServicioSocial.findByCupos", query = "SELECT z FROM ZonaServicioSocial z WHERE z.cupos = :cupos")
+    , @NamedQuery(name = "ZonaServicioSocial.findByEstado", query = "SELECT z FROM ZonaServicioSocial z WHERE z.estado = :estado")})
 public class ZonaServicioSocial implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -85,6 +86,8 @@ public class ZonaServicioSocial implements Serializable {
     @NotNull
     @Column(name = "Cupos")
     private int cupos;
+    @Column(name = "Estado")
+    private Integer estado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "zonadeServicio", fetch = FetchType.LAZY)
     private List<BitacoraServicioSocial> bitacoraServicioSocialList;
 
@@ -168,6 +171,14 @@ public class ZonaServicioSocial implements Serializable {
 
     public void setCupos(int cupos) {
         this.cupos = cupos;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     @XmlTransient

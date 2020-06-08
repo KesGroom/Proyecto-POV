@@ -6,13 +6,15 @@
 package Facade;
 
 import Entidades.Pqrs;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class PqrsFacade extends AbstractFacade<Pqrs> {
@@ -28,5 +30,9 @@ public class PqrsFacade extends AbstractFacade<Pqrs> {
     public PqrsFacade() {
         super(Pqrs.class);
     }
-    
+     public List<Pqrs> consultarPQRS(int estado){
+        Query q = em.createQuery("SELECT p FROM Pqrs p WHERE p.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

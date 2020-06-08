@@ -26,14 +26,15 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Entity
 @Table(name = "docente_materia")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "DocenteMateria.findAll", query = "SELECT d FROM DocenteMateria d")
-    , @NamedQuery(name = "DocenteMateria.findByIdDocMat", query = "SELECT d FROM DocenteMateria d WHERE d.idDocMat = :idDocMat")})
+    @NamedQuery(name = "DocenteMateria.findAll", query = "SELECT d FROM DocenteMateria d WHERE d.estado = 1")
+    , @NamedQuery(name = "DocenteMateria.findByIdDocMat", query = "SELECT d FROM DocenteMateria d WHERE d.idDocMat = :idDocMat")
+    , @NamedQuery(name = "DocenteMateria.findByEstado", query = "SELECT d FROM DocenteMateria d WHERE d.estado = :estado")})
 public class DocenteMateria implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,6 +43,8 @@ public class DocenteMateria implements Serializable {
     @Basic(optional = false)
     @Column(name = "Id_DocMat")
     private Integer idDocMat;
+    @Column(name = "Estado")
+    private Integer estado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDocenteMateria", fetch = FetchType.LAZY)
     private List<Actividad> actividadList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "docenteMateria", fetch = FetchType.LAZY)
@@ -74,6 +77,14 @@ public class DocenteMateria implements Serializable {
 
     public void setIdDocMat(Integer idDocMat) {
         this.idDocMat = idDocMat;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     @XmlTransient

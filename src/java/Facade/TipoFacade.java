@@ -6,13 +6,15 @@
 package Facade;
 
 import Entidades.Tipo;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class TipoFacade extends AbstractFacade<Tipo> {
@@ -28,5 +30,9 @@ public class TipoFacade extends AbstractFacade<Tipo> {
     public TipoFacade() {
         super(Tipo.class);
     }
-    
+     public List<Tipo> consultarTipo(int estado){
+        Query q = em.createQuery("SELECT t FROM Tipo t WHERE t.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

@@ -5,17 +5,17 @@
  */
 package Facade;
 
-import Entidades.RolHasPermiso;
+import Entidades.RolHasPermisos;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
-public class RolHasPermisoFacade extends AbstractFacade<RolHasPermiso> {
+public class RolHasPermisosFacade extends AbstractFacade<RolHasPermisos> {
 
     @PersistenceContext(unitName = "PovPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class RolHasPermisoFacade extends AbstractFacade<RolHasPermiso> {
         return em;
     }
 
-    public RolHasPermisoFacade() {
-        super(RolHasPermiso.class);
+    public RolHasPermisosFacade() {
+        super(RolHasPermisos.class);
     }
     
 }

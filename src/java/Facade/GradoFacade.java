@@ -6,13 +6,15 @@
 package Facade;
 
 import Entidades.Grado;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author kesgr
+ * @author jusag
  */
 @Stateless
 public class GradoFacade extends AbstractFacade<Grado> {
@@ -28,5 +30,9 @@ public class GradoFacade extends AbstractFacade<Grado> {
     public GradoFacade() {
         super(Grado.class);
     }
-    
+     public List<Grado> consultarGrado(int estado){
+        Query q = em.createQuery("SELECT g FROM Grado g WHERE g.estado=:estado");
+                q.setParameter("estado", estado);
+                return q.getResultList();
+    }
 }

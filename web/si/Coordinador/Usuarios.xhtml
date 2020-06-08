@@ -60,9 +60,12 @@
                         <h:inputText id="correoElectronico" value="#{usuarioControlador.usuario.correoElectronico}" title="CorreoElectronico" required="true" requiredMessage="The CorreoElectronico field is required."/>
                         <h:outputLabel value="Contraseña:" for="contrasenna" />
                         <h:inputText id="contrasenna" value="#{usuarioControlador.usuario.contrasenna}" title="Contrasenna" required="true" requiredMessage="The Contrasenna field is required."/>
+                        <h:outputLabel value="Estado:" for="estado" />
+                        <h:inputText id="estado" value="#{usuarioControlador.usuario.estado}" title="Estado" required="true" requiredMessage="The Estado field is required."/>
                         <h:outputLabel value="Rol:" for="idRoles" />
-                        <h:selectOneMenu id="idRoles" value="#{usuarioControlador.rol.idRoles}" title="IdRoles" required="true" requiredMessage="The IdRoles field is required.">
+                        <h:selectOneMenu id="idRoles" value="#{usuarioControlador.rol.idRoles}" title="IdRoles" required="true" requiredMessage="The IdRoles field is required.">    
                             <!-- TODO: update below reference to list of available items-->
+                            
                             <f:selectItem itemValue="0" itemLabel="--Seleccione--" itemDisabled="true" noSelectionOption="true"></f:selectItem>
                             <f:selectItems value="#{rolControlador.consultarRol()}" var="rol" itemValue="#{rol.idRoles}" itemLabel="#{rol.rol}"/>
                         </h:selectOneMenu>
@@ -208,6 +211,13 @@
                                     </f:facet>
                                     <h:outputText value="#{usuario.idTipo.tipo}"/>
                                 </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Estado"/>
+                                    </f:facet>
+                                    <h:commandButton value="Eliminar" action="#{usuarioControlador.Remover(usuario)}"></h:commandButton>
+                                </h:column>
+                                
                             </h:dataTable>
                         </h:form>
                     </f:view>

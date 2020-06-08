@@ -23,7 +23,7 @@
             <ion-icon name="chevron-forward-outline"></ion-icon>
             <a href="#">Bitacora</a>
         </div>
-         <div class="activador tooltipped" id="actAddUser" data-position="bottom" data-tooltip="Añadir Zona"><ion-icon id="iconUser" name="people-circle-outline"></ion-icon></div>
+         <div class="activador tooltipped" id="actAddUser" data-position="bottom" data-tooltip="Añadir bitácora"><ion-icon name="folder-outline"></ion-icon></div>
 
             
             <div class="registro" id="formAddUser">
@@ -105,25 +105,31 @@
                             <f:facet name="header">
                                 <h:outputText value="Coordinador"/>
                             </f:facet>
-                            <h:outputText value="#{item.coordinador}"/>
+                            <h:outputText value="#{item.coordinador.idUsuario.apellido}"/><h:outputText value=" #{item.coordinador.idUsuario.nombre}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Estudiante"/>
                             </f:facet>
-                            <h:outputText value="#{item.estudiante}"/>
+                            <h:outputText value="#{item.estudiante.idUsuario.apellido}"/><h:outputText value=" #{item.estudiante.idUsuario.nombre}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="ZonadeServicio"/>
                             </f:facet>
-                            <h:outputText value="#{item.zonadeServicio}"/>
+                            <h:outputText value="#{item.zonadeServicio.lugar}"/>
                         </h:column>
-                          <h:column>
+                        <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Eliminar"/>
+                                <h:outputText value="Elimimnar"/>
                             </f:facet>
-                              <h:commandButton value="Eliminar" action="#{bitacoraControlador.eliminar()}"></h:commandButton>
+                            <h:commandLink class="eliminar" action="#{bitacoraControlador.Remover(item)}"><ion-icon name="trash-outline"></ion-icon></h:commandLink>
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Modificar"/>
+                            </f:facet>                  
+                             <h:commandLink  class="editar" action="#{bitacoraControlador.preActualizar(bitacora)}"><ion-icon name="create-outline"></ion-icon></h:commandLink>
                         </h:column>
                     </h:dataTable>
                 </h:form>
