@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+          <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
+        <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Se vincula los estilos css específicos de la página-->
+
+        <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
+        de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que
+        la página inicie para evitar fallos-->
+        <script src="../../Resources/js/prefix.js" type="text/javascript"></script>
+        <!-- Se incluye el icono del sistema -->
+        <link rel="shorcut icon" href="../../Resources/img/Sistema/logoVersionFinal.png"/>
+        <!-- Nombre que se visualizará en el navegador -->
+        <title>atencionArea</title>
+        <link href="../../Resources/css/Cita.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+         <div class="Bread">
+            <a href="">Principal</a>
+          <ion-icon name="chevron-forward-outline"></ion-icon> 
+            <a href="#">Usuario</a>
+        </div>
+        <main>
+            
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+      <f:view>
+
+
+          <h:form>
+              
+              <h:panelGrid columns="2">
+                  <h:outputLabel value="IdAtencionArea:" for="idAtencionArea" />
+                  <h:inputText id="idAtencionArea" value="#{antecionAreaControlador.atencionarea.idAtencionArea}" title="IdAtencionArea" required="true" requiredMessage="The IdAtencionArea field is required."/>
+                  <h:outputLabel value="DiaSemana:" for="diaSemana" />
+                  <h:inputText id="diaSemana" value="#{antecionAreaControlador.atencionarea.diaSemana}" title="DiaSemana" required="true" requiredMessage="The DiaSemana field is required."/>
+                  <h:outputLabel value="HoraInicioAtencion:" for="horaInicioAtencion" />
+                  <h:inputText id="horaInicioAtencion" value="#{antecionAreaControlador.atencionarea.horaInicioAtencion}" title="HoraInicioAtencion" required="true" requiredMessage="The HoraInicioAtencion field is required.">
+                      <f:convertDateTime pattern="HH:mm:ss" />
+                  </h:inputText>
+                  <h:outputLabel value="HoraFinalAtencion:" for="horaFinalAtencion" />
+                  <h:inputText id="horaFinalAtencion" value="#{antecionAreaControlador.atencionarea.horaFinalAtencion}" title="HoraFinalAtencion" required="true" requiredMessage="The HoraFinalAtencion field is required.">
+                      <f:convertDateTime pattern="HH:mm:ss" />
+                  </h:inputText>
+                  <h:outputLabel value="Area:" for="area" />
+                  <h:selectOneMenu id="area" value="#{antecionAreaControlador.area.idArea}" title="Area" required="true" requiredMessage="The Area field is required.">
+                      <!-- TODO: update below reference to list of available items-->
+                      <f:selectItems var="area" value="#{areaControlador.consultarArea()}" itemValue="#{area.idArea}" itemLabel="#{area.area}" />
+                  </h:selectOneMenu>
+                  <h:outputLabel value="DocenteACargo:" for="docenteACargo" />
+                  <h:selectOneMenu id="docenteACargo" value="#{antecionAreaControlador.atencionarea.docenteACargo}" title="DocenteACargo" required="true" requiredMessage="The DocenteACargo field is required.">
+                      <!-- TODO: update below reference to list of available items-->
+                      <f:selectItems var="Docente" value="#{docenteControlador.consultarDocente()}" itemValue="#{Docente.idDocente}" itemLabel="#{Docente.idUsuario.nombre}"/>
+                  </h:selectOneMenu>
+              </h:panelGrid>
+          </h:form>
+      </f:view>
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+          
+ 
+
+        </main>
+    </h:body>
+     <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
+        <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>
+        <!-- Se vincula al script AutoIniti el cual contiene el inicializador automático de los elementos de materialize -->
+        <script>
+            M.AutoInit();
+        </script>
+        <!-- Se hace uso de la iconografia de ionicons -->
+        <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+        <!-- Se vincula los scripts propios de la página-->
+</html>
+

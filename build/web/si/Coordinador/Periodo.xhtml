@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+         <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
+        <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Se vincula los estilos css específicos de la página-->
+
+        <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
+        de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que
+        la página inicie para evitar fallos-->
+        <script src="../../Resources/js/prefix.js" type="text/javascript"></script>
+        <!-- Se incluye el icono del sistema -->
+        <link rel="shorcut icon" href="../../Resources/img/Sistema/logoVersionFinal.png"/>
+        <!-- Nombre que se visualizará en el navegador -->
+        <title>Periodo</title>
+        <link href="../../Resources/css/PlanMejoramiento.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <div class="Bread">
+            <a href="">Principal</a>
+          <ion-icon name="chevron-forward-outline"></ion-icon> 
+            <a href="#">Usuario</a>
+        </div>
+    <main>
+        
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger btn-large red darken-4" href="#Crearperiodo">Crear periodo</a>
+
+  <!-- Modal Structure -->
+  <div id="Crearperiodo" class="modal">
+      <f:view>
+
+
+          <h:form>
+              <h1><h:outputText value="Create/Edit"/></h1>
+              <h:panelGrid columns="2">
+                  <h:outputLabel value="IdPeriodo:" for="idPeriodo" />
+                  <h:inputText id="idPeriodo" value="#{registroNotaControlador.periodo.idPeriodo}" title="IdPeriodo" required="true" requiredMessage="The IdPeriodo field is required."/>
+                  <h:outputLabel value="NumeroPeriodo:" for="numeroPeriodo" />
+                  <h:inputText id="numeroPeriodo" value="#{registroNotaControlador.periodo.numeroPeriodo}" title="NumeroPeriodo" required="true" requiredMessage="The NumeroPeriodo field is required."/>
+                  <h:outputLabel value="FechaInicio:" for="fechaInicio" />
+                  <h:inputText id="fechaInicio" value="#{registroNotaControlador.periodo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
+                      <f:convertDateTime pattern="MM/dd/yyyy" />
+                  </h:inputText>
+                  <h:outputLabel value="FechaFinal:" for="fechaFinal" />
+                  <h:inputText id="fechaFinal" value="#{registroNotaControlador.periodo.fechaFinal}" title="FechaFinal" required="true" requiredMessage="The FechaFinal field is required.">
+                      <f:convertDateTime pattern="MM/dd/yyyy" />
+                  </h:inputText>
+              </h:panelGrid>
+              <h:commandButton value="Registrar" action="#{periodoControladores.registrarPeriodo()}"></h:commandButton>
+          </h:form>
+      </f:view>
+     
+
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+    </div>
+  </div>
+   <f:view>
+
+
+          <h:form>
+             
+              <p:dataTable value="#{periodoControladores.consultarPeriodo()}" var="item">
+                  <p:column>
+                      <f:facet name="header">
+                          <h:outputText value="IdPeriodo"/>
+                      </f:facet>
+                      <h:outputText value="#{item.idPeriodo}"/>
+                  </p:column>
+                  <p:column>
+                      <f:facet name="header">
+                          <h:outputText value="NumeroPeriodo"/>
+                      </f:facet>
+                      <h:outputText value="#{item.numeroPeriodo}"/>
+                  </p:column>
+                  <p:column>
+                      <f:facet name="header">
+                          <h:outputText value="FechaInicio"/>
+                      </f:facet>
+                      <h:outputText value="#{item.fechaInicio}">
+                          <f:convertDateTime pattern="MM/dd/yyyy" />
+                      </h:outputText>
+                  </p:column>
+                  <p:column>
+                      <f:facet name="header">
+                          <h:outputText value="FechaFinal"/>
+                      </f:facet>
+                      <h:outputText value="#{item.fechaFinal}">
+                          <f:convertDateTime pattern="MM/dd/yyyy" />
+                      </h:outputText>
+                  </p:column>
+              </p:dataTable>
+          </h:form>
+      </f:view>
+    </main>
+    <h:body>
+        
+    </h:body>
+    <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
+        <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>
+        <!-- Se vincula al script AutoIniti el cual contiene el inicializador automático de los elementos de materialize -->
+        <script>
+            M.AutoInit();
+        </script>
+        <!-- Se hace uso de la iconografia de ionicons -->
+        <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+        <!-- Se vincula los scripts propios de la página-->
+</html>
+

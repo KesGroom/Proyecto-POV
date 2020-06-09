@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
     <h:head>
         <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
         <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
@@ -15,10 +17,129 @@
         <link rel="shorcut icon" href="../../Resources/img/Sistema/logoVersionFinal.png"/>
         <!-- Nombre que se visualizará en el navegador -->
         <title>Agenda web</title>
+        <!-- Se vincula los estilos css específicos de la página-->
+        <link href="../../Resources/css/AgendaWeb.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
         
+        <!-- ELemento hijo de contenedor y elemento padre de su contenido -->
+         <div class="Bread">
+            <a href="">Principal</a>
+          <ion-icon name="chevron-forward-outline"></ion-icon> 
+            <a href="#">Usuario</a>
+        </div>
+        <main>
+            
+            
+           
+         <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger red darken-4" href="#modal1">Registrar nuevo Estudiante</a>
+
+  
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+      <f:view>
+
+
+            <h:form>
+                <div class="titulo_modal">Crear nueva agenda</div>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="Categoria:" for="categoria" />
+                    <h:inputText id="categoria" value="#{agendaWebControlador.agendaWeb.categoria}" title="Categoria" required="true" requiredMessage="The Categoria field is required."/>
+                    <h:outputLabel value="Descripcion:" for="descripcion" />
+                    <h:inputTextarea rows="4" cols="30" id="descripcion" value="#{agendaWebControlador.agendaWeb.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
+                    <h:outputLabel value="Actividad:" for="actividad" />
+                    <h:selectOneMenu id="actividad" value="#{agendaWebControlador.agendaWeb.actividad}" title="Actividad" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="DocenteMateria:" for="docenteMateria" />
+                    <h:selectOneMenu id="docenteMateria" value="#{agendaWebControlador.docenteMateria.idDocMat}" title="DocenteMateria" required="true" requiredMessage="The DocenteMateria field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems var="docemat" value="#{docenteMateriaControladores.consultarDocenteMateria()}" itemValue="#{docemat.idDocMat}" itemLabel="#{docemat.idDocMat}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Estudiante:" for="estudiante" />
+                    <h:selectOneMenu id="estudiante" value="#{agendaWebControlador.estudiante.idEstudiante}" title="Estudiante" required="true" requiredMessage="The Estudiante field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems var="estudiante" value="#{estudianteControladores.consultarEstudiante()}" itemValue="#{estudiante.idEstudiante}" itemLabel="#{estudiante.idUsuario.nombre}" />
+                    </h:selectOneMenu>
+                       <h:outputLabel value="PlanMejoramiento:" for="planMejoramiento" />
+                    <h:selectOneMenu id="planMejoramiento" value="#{agendaWebControlador.agendaWeb.planMejoramiento}" title="PlanMejoramiento" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+            
+                </h:panelGrid>
+                <div class="Central-boton">
+                <h:commandButton value="Registrar nueva agenda" class="waves-effect waves-light btn-large modal-trigger" action="#{agendaWebControlador.registrarAgendaWeb()}"></h:commandButton>
+                </div>
+            </h:form>
+        </f:view>
+
+  </div>    
+  <div class="titulo">Agenda registradas</div>
+  <f:view>
+
+
+      <h:form>
+          
+          <h:dataTable value="#{agendaWebControlador.consultarAgendaWeb()}" var="item">
+             
+              <h:column>
+                  <f:facet name="header">
+                      <h:outputText value="Categoria"/>
+                  </f:facet>
+                  <h:outputText value="#{item.categoria}"/>
+              </h:column>
+              <h:column>
+                  <f:facet name="header">
+                      <h:outputText value="Descripcion"/>
+                  </f:facet>
+                  <h:outputText value="#{item.descripcion}"/>
+              </h:column>
+              <h:column>
+                  <f:facet name="header">
+                      <h:outputText value="Actividad"/>
+                  </f:facet>
+                  <h:outputText value="#{item.actividad}"/>
+              </h:column>
+              <h:column>
+                  <f:facet name="header">
+                      <h:outputText value="DocenteMateria"/>
+                  </f:facet>
+                  <h:outputText value="#{item.docenteMateria.idMateria.materia}"/>
+              </h:column>
+              <h:column>
+                  <f:facet name="header">
+                      <h:outputText value="Estudiante"/>
+                  </f:facet>
+                  <h:outputText value="#{item.estudiante.idUsuario.nombre}"/>
+              </h:column>
+              <h:column>
+                  <f:facet name="header">
+                      <h:outputText value="PlanMejoramiento"/>
+                  </f:facet>
+                  <h:outputText value="#{item.planMejoramiento}"/>
+              </h:column>
+          </h:dataTable>
+      </h:form>
+  </f:view>
+
+
+        
+        </main>
+        
+
+        
+
+
+       
+
+       
+       
+
+    <label>Materialize Select</label>
         <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
         <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>
         <!-- Se vincula al script AutoIniti el cual contiene el inicializador automático de los elementos de materialize -->

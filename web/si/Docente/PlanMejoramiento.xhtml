@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
+        <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Se vincula los estilos css específicos de la página-->
+
+        <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
+        de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que
+        la página inicie para evitar fallos-->
+        <script src="../../Resources/js/prefix.js" type="text/javascript"></script>
+        <!-- Se incluye el icono del sistema -->
+        <link rel="shorcut icon" href="../../Resources/img/Sistema/logoVersionFinal.png"/>
+        <!-- Nombre que se visualizará en el navegador -->
+        <title>Plan De Mejoramiento</title>
+        <link href="../../Resources/css/PlanMejoramiento.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <div class="Bread">
+            <a href="">Principal</a>
+          <ion-icon name="chevron-forward-outline"></ion-icon> 
+            <a href="#">Usuario</a>
+        </div>
+        <main>
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger btn-large red darken-4" href="#modal1">Registrar Plan</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+      <f:view>
+
+
+          <h:form>
+              <div class="titulo_modal"> Crear plan</div>
+              <h:panelGrid columns="2">
+                  
+                  <h:outputLabel value="FechaAsignacion:" for="fechaAsignacion" />
+                  <h:inputText id="fechaAsignacion" value="#{planDeMejoramientoControlador.planMejoramiento.fechaAsignacion}" title="FechaAsignacion" required="true" requiredMessage="The FechaAsignacion field is required.">
+                      <f:convertDateTime pattern="MM/dd/yyyy" />
+                  </h:inputText>
+                  <h:outputLabel value="FechaEntrega:" for="fechaEntrega" />
+                  <h:inputText id="fechaEntrega" value="#{planDeMejoramientoControlador.planMejoramiento.fechaEntrega}" title="FechaEntrega" required="true" requiredMessage="The FechaEntrega field is required.">
+                      <f:convertDateTime pattern="MM/dd/yyyy" />
+                  </h:inputText>
+                  <h:outputLabel value="Recursos:" for="recursos" />
+                  <h:inputText id="recursos" value="#{planDeMejoramientoControlador.planMejoramiento.recursos}" title="Recursos" />
+                  <h:outputLabel value="Descripcion:" for="descripcion" />
+                  <h:inputTextarea rows="4" cols="30" id="descripcion" value="#{planDeMejoramientoControlador.planMejoramiento.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
+                  <h:outputLabel value="DocenteAsigna:" for="docenteAsigna" />
+                  <h:selectOneMenu id="docenteAsigna" value="#{planDeMejoramientoControlador.docenteMateria.idDocMat}" title="DocenteAsigna" required="true" requiredMessage="The DocenteAsigna field is required.">
+                      <!-- TODO: update below reference to list of available items-->
+                      <f:selectItems var="Docemate" value="#{docenteMateriaControladores.consultarDocenteMateria()}" itemValue="#{Docemate.idDocMat}" itemLabel="#{Docemate.idDocMat}"/>
+                  </h:selectOneMenu>
+              </h:panelGrid>
+              <h:commandButton value="Registrar" class="btn-large red darken-4" action="#{planDeMejoramientoControlador.registrarPlanMejoramiento()}"></h:commandButton>
+          </h:form>
+      </f:view>
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+  <f:view>
+
+      <div class="titulo"> planes registrados</div>
+      <h:form>
+          
+          <p:dataTable value="#{planDeMejoramientoControlador.consultarPlanMejoramiento()}" var="item">
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="IdPlanMejoramiento"/>
+                  </f:facet>
+                  <h:outputText value="#{item.idPlanMejoramiento}"/>
+              </p:column>
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="FechaAsignacion"/>
+                  </f:facet>
+                  <h:outputText value="#{item.fechaAsignacion}">
+                      <f:convertDateTime pattern="MM/dd/yyyy" />
+                  </h:outputText>
+              </p:column>
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="FechaEntrega"/>
+                  </f:facet>
+                  <h:outputText value="#{item.fechaEntrega}">
+                      <f:convertDateTime pattern="MM/dd/yyyy" />
+                  </h:outputText>
+              </p:column>
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="Recursos"/>
+                  </f:facet>
+                  <h:outputText value="#{item.recursos}"/>
+              </p:column>
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="Descripcion"/>
+                  </f:facet>
+                  <h:outputText value="#{item.descripcion}"/>
+              </p:column>
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="DocenteAsigna"/>
+                  </f:facet>
+                  <h:outputText value="#{item.docenteAsigna}"/>
+              </p:column>
+          </p:dataTable>
+      </h:form>
+  </f:view>
+</main>
+    </h:body>
+      <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
+        <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>
+        <!-- Se vincula al script AutoIniti el cual contiene el inicializador automático de los elementos de materialize -->
+        <script>
+            M.AutoInit();
+        </script>
+        <!-- Se hace uso de la iconografia de ionicons -->
+        <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+        <!-- Se vincula los scripts propios de la página-->
+</html>
+

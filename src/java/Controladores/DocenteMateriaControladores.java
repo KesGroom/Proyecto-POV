@@ -5,7 +5,9 @@
  */
 package Controladores;
 
+import Entidades.Docente;
 import Entidades.DocenteMateria;
+import Entidades.Materia;
 import Facade.DocenteMateriaFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -28,13 +30,27 @@ public class DocenteMateriaControladores implements Serializable {
     public DocenteMateriaControladores() {
     }
     DocenteMateria docenteMateria;
-    @PostConstruct
-    public void init(){
-        docenteMateria = new DocenteMateria();
-        
-    }
+    Materia materia;
+    Docente docente;
     @EJB
     DocenteMateriaFacade docenteMateriaFacade;
+
+    public Docente getDocente() {
+        return docente;
+    }
+
+    public void setDocente(Docente docente) {
+        this.docente = docente;
+    }
+
+    
+    public Materia getMateria() {
+        return materia;
+    }
+
+    public void setMateria(Materia materia) {
+        this.materia = materia;
+    }
 
     public DocenteMateria getDocenteMateria() {
         return docenteMateria;
@@ -43,7 +59,19 @@ public class DocenteMateriaControladores implements Serializable {
     public void setDocenteMateria(DocenteMateria docenteMateria) {
         this.docenteMateria = docenteMateria;
     }
+    @PostConstruct
+    public void init(){
+        docenteMateria = new DocenteMateria();
+        docente = new Docente();
+        materia = new Materia();
+        
+    }
     public List<DocenteMateria> consultarDocenteMateria(){
     return docenteMateriaFacade.findAll();
 }
+    public void registrarDocenteMateria(){
+        docenteMateria.setIdDocente(docente);
+        docenteMateria.setIdMateria(materia);
+        docenteMateriaFacade.create(docenteMateria);
+    }
 }
